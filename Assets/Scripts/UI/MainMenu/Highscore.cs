@@ -1,19 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UI.MainMenu;
 using UnityEngine;
 
 public class Highscore : MonoBehaviour
 {
+    public Camera Camera;
+    
     public GameObject PlayerHighscoreItem1;
     public GameObject PlayerHighscoreItem2;
     public GameObject PlayerHighscoreItem3;
     public GameObject PlayerHighscoreItem4;
     public GameObject PlayerHighscoreItem5;
-
-    public void ButtonBackToMainMenu()
-    {
-        this.gameObject.SetActive(false);
-    }
     
     private (string, long)[] _test = 
     {
@@ -37,13 +35,12 @@ public class Highscore : MonoBehaviour
     {
         var hsi = gameObject.GetComponent<HighscoreItem>(); 
         hsi.SetValues(item.Item1, item.Item2);
-        
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"{this.gameObject.transform.hasChanged}");
+        
     }
+
 }

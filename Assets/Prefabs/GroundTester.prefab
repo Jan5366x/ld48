@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3165983293472896576}
   - component: {fileID: 3165983293472896577}
   - component: {fileID: 3165983293472896578}
+  - component: {fileID: -6711081855295233367}
   m_Layer: 0
   m_Name: GroundTester
   m_TagString: Untagged
@@ -96,3 +97,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086171c454d18a9419fc0f79961060b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6711081855295233367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3165983293472896579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f346e8ba94d84798ab1bffac106b4038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepsPerUnitX: 1
+  stepsPerUnitY: 1

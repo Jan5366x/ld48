@@ -11,8 +11,8 @@ public class Pickupable : MonoBehaviour
         Player player = other.gameObject.GetComponentInChildren<Player>();
         if (player)
         {
-            player.CollectMoney(money);
-            player.Heal(healing);
+            Player.CollectMoney(other.transform, money);
+            Player.entity.Heal(healing);
             Instantiate(onPickupPrefab, other.transform);
             Destroy(gameObject);
         }

@@ -1,26 +1,37 @@
+using System;
 using Unity.Collections;
 using UnityEngine;
 
-public class Player : Entity
+public class Player : MonoBehaviour
 {
-    public float maxStamina = 100;
-    [ReadOnly] public float stamina;
-    public float minSprintStartStamina = 20;
-    public float staminaUsagePerSec = 10;
-    public float staminaRecoveryPerSec = 5;
+    public static float maxStamina = 100;
+    [ReadOnly] public static float stamina;
+    public static float minSprintStartStamina = 20;
+    public static float staminaUsagePerSec = 10;
+    public static float staminaRecoveryPerSec = 5;
 
-    public bool previousSprint;
+    public static bool previousSprint;
 
-    public int numMoney;
+    public static int numMoney;
 
-    private void Start()
+    // Restore non static health after level transition
+    public static Entity entity;
+
+    private void Awake()
+    {
+        entity = gameObject.AddComponent<Entity>();
+        ResetPlayerData();
+    }
+
+    public static void ResetPlayerData()
     {
         stamina = maxStamina;
         numMoney = 0;
-        health = maxHealth;
+        entity.maxHealth = 100;
+        entity.health = entity.maxHealth;
     }
 
-    public bool CalculateStaminaTick(bool isSprint)
+    public static bool CalculateStaminaTick(bool isSprint)
     {
         isSprint = isSprint && CheckStamina();
 
@@ -38,17 +49,18 @@ public class Player : Entity
         return isSprint;
     }
 
-    private bool CheckStamina()
+    private static bool CheckStamina()
     {
         return stamina > (previousSprint ? 0 : minSprintStartStamina);
     }
 
-    public void CollectMoney(int money)
+    public static void CollectMoney(Transform transform, int money)
     {
         if (money > 0)
         {
             RandomizedSound.Play(transform, RandomizedSound.MONEY);
         }
+
         numMoney += money;
     }
 }

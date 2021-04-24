@@ -17,12 +17,6 @@ public class PlayerMovement : MonoBehaviour
     [ReadOnly] public int lastDirectionV = 0;
     [ReadOnly] public int lastDirectionH = 0;
     public Transform weapon;
-    public Player player;
-
-    private void Awake()
-    {
-        player = GetComponentInChildren<Player>();
-    }
 
     // Update is called once per frame
     private void FixedUpdate()
@@ -30,9 +24,9 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
-        bool isSprint = player.CalculateStaminaTick(Input.GetButton("Fire1"));
+        bool isSprint = Player.CalculateStaminaTick(Input.GetButton("Fire1"));
         previousSprint = isSprint;
-        speed = (isSprint ? sprintSpeed : walkingSpeed);
+        speed = isSprint ? sprintSpeed : walkingSpeed;
 
         Rigidbody2D rigidbody = GetComponentInChildren<Rigidbody2D>();
         if (Mathf.Approximately(vertical, 0f) && Mathf.Approximately(horizontal, 0f))

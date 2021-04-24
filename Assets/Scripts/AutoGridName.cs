@@ -7,7 +7,15 @@ public class AutoGridName : MonoBehaviour
 {
     private Vector3 _lastLocation;
     
-    public void Awake () => AutoName();
+    public void Awake ()
+    {
+        AutoName();
+        
+        if (Application.isPlaying)
+        {
+            enabled = false;
+        }
+    }
 
     public void Update () => AutoName();
 

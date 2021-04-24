@@ -13,6 +13,9 @@ public class MainMenu : MonoBehaviour
         // TODO: Setup here the main game content.
         SceneManager.LoadScene("TYPE THE MAIN GAME CONTENT");
     }
-    
-    
+
+    public void ButtonHighscore()
+    {
+        SceneManager.LoadScene("Scenes/Highscore");
+    }
 }

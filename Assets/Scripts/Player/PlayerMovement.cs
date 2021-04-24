@@ -4,10 +4,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public const String IDLE = "Idle";
-    public const String DIRECTION = "Direction";
+    public const String DIRECTION_H = "DirectionH";
+    public const String DIRECTION_V = "DirectionV";
     public const String SHOW_RIGHT = "ShowRight";
     public float movementSpeed = 5;
-    public int lastDirection = 0;
+    public int lastDirectionV = 0;
+    public int lastDirectionH = 0;
     public Transform weapon;
 
     // Update is called once per frame
@@ -30,26 +32,35 @@ public class PlayerMovement : MonoBehaviour
 
         bool right = horizontal > 0;
 
-        int directionComponent = 0;
+        int directionH = 0;
         if (horizontal < 0)
         {
-            directionComponent -= 1;
+            directionH = -1;
         }
         else if (horizontal > 0)
         {
-            directionComponent += 1;
+            directionH = 1;
         }
 
+        int directionV = 0;
         if (vertical < 0)
         {
-            directionComponent -= 2;
+            directionV = -1;
         }
-        else if (horizontal > 0)
+        else if (vertical > 0)
         {
-            directionComponent += 2;
+            directionV = 1;
         }
 
-        directionComponent += 3;
+        // 0 Idle
+        // 1 Right
+        // 2 Top
+        // 3 TopRight
+        // 4 
+        // 5
+        // 6
+        // 7
+        // 8
 
         if (idle)
         {
@@ -76,9 +87,14 @@ public class PlayerMovement : MonoBehaviour
                     animator.SetBool(IDLE, false);
                 }
 
-                if (AnimationHelper.hasParameter(animator, DIRECTION))
+                if (AnimationHelper.hasParameter(animator, DIRECTION_H))
                 {
-                    animator.SetInteger(DIRECTION, directionComponent);
+                    animator.SetInteger(DIRECTION_H, directionH);
+                }
+
+                if (AnimationHelper.hasParameter(animator, DIRECTION_V))
+                {
+                    animator.SetInteger(DIRECTION_V, directionV);
                 }
 
                 if (AnimationHelper.hasParameter(animator, SHOW_RIGHT))
@@ -93,35 +109,22 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
 
-                lastDirection = directionComponent;
+                lastDirectionV = directionV;
+                lastDirectionH = directionH;
             }
         }
 
-        ReAnchorWeapon(idle, idle ? lastDirection : directionComponent);
+        ReAnchorWeapon(idle, idle ? lastDirectionH : directionH, idle ? lastDirectionV : directionV);
     }
 
 
-    private void ReAnchorWeapon(bool idle, int direction)
+    private void ReAnchorWeapon(bool idle, int directionH, int directionV)
     {
         if (weapon)
         {
             if (!idle)
             {
-                switch (direction)
-                {
-                    case 0:
-                        weapon.SetParent(transform.Find("HandForwards"), false);
-                        break;
-                    case 1:
-                        weapon.SetParent(transform.Find("HandLeft"), false);
-                        break;
-                    case 2:
-                        weapon.SetParent(transform.Find("HandBackwards"), false);
-                        break;
-                    case 3:
-                        weapon.SetParent(transform.Find("HandRight"), false);
-                        break;
-                }
+                weapon.SetParent(transform.Find("Hand_" + directionH + "_" + directionV), false);
             }
         }
     }

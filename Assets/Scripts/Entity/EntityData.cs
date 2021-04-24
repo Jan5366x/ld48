@@ -1,6 +1,9 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class Entity : MonoBehaviour
+[Serializable]
+public class EntityData
 {
     public float health;
     public float maxHealth;
@@ -10,7 +13,7 @@ public class Entity : MonoBehaviour
 
     public bool wasDead = false;
 
-    public void Heal(float amount)
+    public void Heal(Transform transform, float amount)
     {
         if (isDead())
         {
@@ -25,11 +28,11 @@ public class Entity : MonoBehaviour
         health = Mathf.Max(maxHealth, health + amount);
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(Transform transform, float amount)
     {
         health -= amount;
 
-        Transform newTransform = Instantiate(onDamagePrefab, transform);
+        Transform newTransform = Transform.Instantiate(onDamagePrefab, transform);
         newTransform.Translate(Random.Range(splatterArea.xMin, splatterArea.xMax),
             Random.Range(splatterArea.yMin, splatterArea.yMax), 0);
         Animation animator = newTransform.GetComponent<Animation>();
@@ -42,23 +45,23 @@ public class Entity : MonoBehaviour
 
         if (health < 0)
         {
-            Die();
+            Die(transform);
         }
     }
 
-    private void Die()
+    private void Die(Transform transform)
     {
         wasDead = true;
         if (onDeathPrefab)
         {
-            Instantiate(onDeathPrefab, transform.position, transform.rotation);
+            Transform.Instantiate(onDeathPrefab, transform.position, transform.rotation);
         }
 
         RandomizedSound.Play(transform, RandomizedSound.DIE);
 
         // GameOverToggler.OnDeath();
 
-        Destroy(gameObject);
+        Transform.Destroy(transform.gameObject);
     }
 
     public bool isDead()

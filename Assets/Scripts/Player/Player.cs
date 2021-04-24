@@ -15,11 +15,10 @@ public class Player : MonoBehaviour
     public static int numMoney;
 
     // Restore non static health after level transition
-    public static Entity entity;
+    public static EntityData entity = new EntityData();
 
     private void Awake()
     {
-        entity = gameObject.AddComponent<Entity>();
         ResetPlayerData();
     }
 

@@ -5,10 +5,10 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class OrderScript : MonoBehaviour
 {
-    private const int ChildLayerSpace = 100;
-
     public float groundOffset;
-
+    
+    private const int ChildLayerSpace = 100;
+    
     private int _sortingOrder = 0;
     private SpriteRenderer _spriteRenderer;
     private bool _hasOwnRenderer = false;

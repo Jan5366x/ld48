@@ -10,6 +10,11 @@ public class Highscore : MonoBehaviour
     public GameObject PlayerHighscoreItem4;
     public GameObject PlayerHighscoreItem5;
 
+    public void ButtonBackToMainMenu()
+    {
+        this.gameObject.SetActive(false);
+    }
+    
     private (string, long)[] _test = 
     {
         ("Player 1", 11111111111),
@@ -21,23 +26,6 @@ public class Highscore : MonoBehaviour
     
     void Start()
     {
-        // int i = 0;
-        // foreach (var valueTuple in this._test)
-        // {
-        //     Debug.Log($"ADD Item {i}");
-        //     
-        //     var hs = Instantiate(this.TemplateHighscoreItem, this.PlayerHighscoreContent.transform, true);
-        //     hs.SetActive(true);
-        //     var hsi = hs.GetComponent<HighscoreItem>();
-        //     hsi.SetValues(valueTuple.Item1, valueTuple.Item2);
-        //
-        //     var posY = i * 30 * -1;
-        //     Debug.Log($"POS Y: {posY}");
-        //     hs.transform.position = new Vector3(0, posY, 0);
-        //     
-        //     i++;
-        // }
-
         this.SetValues(this._test[0], this.PlayerHighscoreItem1);
         this.SetValues(this._test[1], this.PlayerHighscoreItem2);
         this.SetValues(this._test[2], this.PlayerHighscoreItem3);
@@ -56,6 +44,6 @@ public class Highscore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log($"{this.gameObject.transform.hasChanged}");
     }
 }

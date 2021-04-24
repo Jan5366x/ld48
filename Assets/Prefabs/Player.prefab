@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 2876993706048798769}
   - component: {fileID: 2876993706048798771}
   - component: {fileID: 2876993706048798768}
+  - component: {fileID: -1874724318198287628}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -142,6 +143,7 @@ MonoBehaviour:
   staminaRecoveryPerSec: 5
   walkingSpeed: 5
   sprintSpeed: 10
+  speed: 0
   previousSprint: 0
   lastDirectionV: 0
   lastDirectionH: 0
@@ -167,6 +169,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!70 &-1874724318198287628
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876993706048798774}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!1 &2876993706236763243
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +196,7 @@ GameObject:
   - component: {fileID: 2876993706236763242}
   - component: {fileID: 2876993706236763253}
   - component: {fileID: 8140703059801264419}
+  - component: {fileID: 2283550320392656972}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -272,6 +291,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2283550320392656972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876993706236763243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29a18c71c40f5d48bae82308806f05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundOffset: 0
 --- !u!1 &3216361061814788062
 GameObject:
   m_ObjectHideFlags: 0

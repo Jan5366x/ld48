@@ -11,6 +11,11 @@ public class MainMenu : MonoBehaviour
         this.Highscore.SetActive(false);
     }
 
+    public void ButtonCredit()
+    {
+        
+    }
+
     public void ButtonExit()
     {
         Application.Quit();

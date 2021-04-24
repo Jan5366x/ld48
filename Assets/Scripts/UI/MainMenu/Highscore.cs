@@ -31,7 +31,7 @@ public class Highscore : MonoBehaviour
 
             var posY = i * 30 * -1;
             Debug.Log($"POS Y: {posY}");
-            hsi.transform.position = new Vector3(0, posY, 0);
+            hs.transform.position = new Vector3(0, posY, 0);
             
             i++;
         }

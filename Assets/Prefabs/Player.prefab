@@ -102,6 +102,8 @@ GameObject:
   - component: {fileID: 2876993706048798771}
   - component: {fileID: 2876993706048798768}
   - component: {fileID: -1874724318198287628}
+  - component: {fileID: 4817876483309946936}
+  - component: {fileID: 8850059667667411436}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -136,18 +138,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e751911cf6ed8291a8b9375642000909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 100
-  stamina: 100
-  minSprintStartStamina: 20
-  staminaUsagePerSec: 10
-  staminaRecoveryPerSec: 5
+  speed: 0
   walkingSpeed: 5
   sprintSpeed: 10
-  speed: 0
   previousSprint: 0
   lastDirectionV: 0
   lastDirectionH: 0
   weapon: {fileID: 4322984357245960697}
+  player: {fileID: 0}
 --- !u!50 &2876993706048798768
 Rigidbody2D:
   serializedVersion: 4
@@ -182,8 +180,54 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0, y: 0.11}
+  m_Size: {x: 0.36, y: 0.09}
+  m_Direction: 1
+--- !u!114 &4817876483309946936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876993706048798774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be1ee1d12b2ca36181f7ea873385b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 0
+  onDeathPrefab: {fileID: 0}
+  onDamagePrefab: {fileID: 0}
+  splatterArea:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  wasDead: 0
+  maxStamina: 100
+  stamina: 0
+  minSprintStartStamina: 20
+  staminaUsagePerSec: 10
+  staminaRecoveryPerSec: 5
+  previousSprint: 0
+  numMoney: 0
+--- !u!70 &8850059667667411436
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876993706048798774}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.48}
+  m_Size: {x: 0.44, y: 0.82}
   m_Direction: 0
 --- !u!1 &2876993706236763243
 GameObject:

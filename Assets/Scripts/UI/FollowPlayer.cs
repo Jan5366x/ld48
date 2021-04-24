@@ -17,6 +17,11 @@ public class FollowPlayer : MonoBehaviour
 
     private static Vector2 centerNormalized = new Vector2(0.5f, 0.5f);
 
+    private void Awake()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
+
     void FixedUpdate()
     {
         if (player)

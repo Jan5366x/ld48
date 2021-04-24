@@ -9,18 +9,10 @@ public class PlayerMovement : MonoBehaviour
     public const String DIRECTION_V = "DirectionV";
     public const String SHOW_RIGHT = "ShowRight";
 
-    public float maxStamina = 100;
-    [ReadOnly] public float stamina = 100;
-    public float minSprintStartStamina = 20;
-    public float staminaUsagePerSec = 10;
-    public float staminaRecoveryPerSec = 5;
-
+    [ReadOnly] public float speed;
     public float walkingSpeed = 5;
     public float sprintSpeed = 10;
 
-    [ReadOnly]
-    public float speed;
-    
     [ReadOnly] public bool previousSprint = false;
     [ReadOnly] public int lastDirectionV = 0;
     [ReadOnly] public int lastDirectionH = 0;
@@ -32,19 +24,9 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
-        bool isSprint = calculateIsSprint();
-        if (isSprint)
-        {
-            stamina = Mathf.Max(0, stamina - staminaUsagePerSec * Time.deltaTime);
-        }
-        else
-        {
-            stamina = Mathf.Min(maxStamina, stamina + staminaRecoveryPerSec * Time.deltaTime);
-        }
-
+        bool isSprint = Player.CalculateStaminaTick(Input.GetButton("Fire1"));
         previousSprint = isSprint;
-
-        speed = (isSprint ? sprintSpeed : walkingSpeed);
+        speed = isSprint ? sprintSpeed : walkingSpeed;
 
         Rigidbody2D rigidbody = GetComponentInChildren<Rigidbody2D>();
         if (Mathf.Approximately(vertical, 0f) && Mathf.Approximately(horizontal, 0f))
@@ -134,17 +116,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         ReAnchorWeapon(idle, idle ? lastDirectionH : directionH, idle ? lastDirectionV : directionV);
-    }
-
-    private bool calculateIsSprint()
-    {
-        bool isSprint = Input.GetButton("Fire1");
-        if (!isSprint)
-        {
-            return false;
-        }
-
-        return stamina > (previousSprint ? 0 : minSprintStartStamina);
     }
 
     private void ReAnchorWeapon(bool idle, int directionH, int directionV)

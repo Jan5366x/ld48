@@ -1,12 +1,12 @@
-using System;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
     public EntityData entity;
     public GameObject player;
     public Vector3 homePosition;
+    public float maxHomeDistance = 10;
+    public float minHomeDistance = 1;
 
     public float senseRange = 5;
     public float aggressionRange = 3;
@@ -18,13 +18,16 @@ public class Enemy : MonoBehaviour
     public float aggressionCooldown = 2;
     public float aggressionTimer;
 
+    public float roamRange = 3; 
     public float roamDuration = 30;
     public float roamTimer = 0;
+    public float roamStartDuration = 10;
+    public float roamStartTimer = 0;
     public bool isRoaming;
     public bool isReturning;
-    
-    public float distanceChangeCooldown = 5;
-    public float distanceChangedTimer;
+
+    public float roamTargetChangedCooldown = 3;
+    public float roamTargetChangedTimer;
     public Vector3 targetPosition;
 
     public float minDistance = 0.1f;
@@ -35,69 +38,76 @@ public class Enemy : MonoBehaviour
         homePosition = transform.position;
     }
 
-    private void Update()
+    private void SelectTargetPosition()
     {
-        LoadPlayer();
-        if (player)
-        {
-            Debug.DrawLine(transform.position,
-                transform.position + senseRange * (player.transform.position - transform.position).normalized,
-                Color.black, 1);
-            Debug.DrawLine(transform.position,
-                transform.position + aggressionRange * (player.transform.position - transform.position).normalized,
-                Color.blue, 1);
-            Debug.DrawLine(transform.position,
-                transform.position + attackRange * (player.transform.position - transform.position).normalized,
-                Color.green, 1);
-            var distance = Vector3.Distance(player.transform.position, transform.position);
-            if (distance < attackRange)
-            {
-                if (aggressionTimer < 0)
-                {
-                    Player.entity.TakeDamage(player.transform, damage);
-                    aggressionTimer = aggressionCooldown;
-                }
-            }
-        }
+        float playerDistance = Vector3.Distance(player.transform.position, transform.position);
+        float homeDistance = Vector3.Distance(homePosition, transform.position);
 
-        aggressionTimer -= Time.deltaTime;
-    }
-
-    private void LoadPlayer()
-    {
-        if (!player)
-        {
-            player = GameObject.FindWithTag("Player");
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        var distance = float.MaxValue;
-        if (player)
-        {
-            distance = Vector3.Distance(player.transform.position, transform.position);
-        }
-
-        distanceChangedTimer -= Time.fixedDeltaTime;
-
-        if (distance < senseRange && !Player.entity.isDead())
+        if (playerDistance < senseRange)
         {
             targetPosition = player.transform.position;
+            return;
         }
-        else
+
+        if (homeDistance < minHomeDistance)
         {
-            if (distanceChangedTimer < 0)
+            if (isReturning)
             {
-                targetPosition = transform.position + Random.onUnitSphere;
-                targetPosition.z = 0;
-                distanceChangedTimer = distanceChangeCooldown;
+                roamStartTimer = roamStartDuration;
+                isReturning = false;
+                isRoaming = false;
+            }
+
+            if (roamStartTimer < 0 && !isRoaming)
+            {
+                roamTimer = roamDuration;
+                isRoaming = true;
             }
         }
 
-        Debug.Log(distanceChangedTimer);
+        if (homeDistance > maxHomeDistance || (isRoaming && roamTimer < 0))
+        {
+            isRoaming = false;
+            isReturning = true;
+        }
 
-        Debug.DrawLine(transform.position, targetPosition, Color.red, 1);
+        if (isReturning)
+        {
+            targetPosition = homePosition;
+        }
+
+        if (isRoaming)
+        {
+            if (roamTargetChangedTimer < 0)
+            {
+                targetPosition = transform.position + Random.onUnitSphere * roamRange;
+                targetPosition.z = 0;
+                roamTargetChangedTimer = roamTargetChangedCooldown;
+            }
+        }
+    }
+
+    private void Update()
+    {
+        aggressionTimer -= Time.deltaTime;
+        roamTimer -= Time.deltaTime;
+        roamTargetChangedTimer -= Time.deltaTime;
+        roamStartTimer -= Time.deltaTime;
+
+        LoadPlayer();
+        float playerDistance = Vector3.Distance(player.transform.position, transform.position);
+
+        if (playerDistance < attackRange)
+        {
+            if (aggressionTimer < 0)
+            {
+                Player.entity.TakeDamage(player.transform, damage);
+                aggressionTimer = aggressionCooldown;
+            }
+        }
+
+        SelectTargetPosition();
+        DrawDebugLines();
 
         delta = targetPosition - transform.position;
         if (delta.magnitude > minDistance)
@@ -105,9 +115,27 @@ public class Enemy : MonoBehaviour
             Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
             if (rigidbody)
             {
-                rigidbody.AddForce(rigidbody.mass * (distance < aggressionRange ? speedAggressive : speedNormal) *
+                rigidbody.AddForce(rigidbody.mass * (playerDistance < aggressionRange ? speedAggressive : speedNormal) *
                                    delta.normalized);
             }
+        }
+    }
+
+    private void DrawDebugLines()
+    {
+        Debug.DrawLine(transform.position, targetPosition, Color.red, 1);
+        Debug.DrawLine(transform.position, homePosition, Color.magenta, 1);
+        Vector3 playerDirection = (player.transform.position - transform.position).normalized;
+        Debug.DrawLine(transform.position, transform.position + senseRange * playerDirection, Color.black, 1);
+        Debug.DrawLine(transform.position, transform.position + aggressionRange * playerDirection, Color.blue, 1);
+        Debug.DrawLine(transform.position, transform.position + attackRange * playerDirection, Color.green, 1);
+    }
+
+    private void LoadPlayer()
+    {
+        if (!player)
+        {
+            player = GameObject.FindWithTag("Player");
         }
     }
 }

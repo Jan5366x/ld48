@@ -1,8 +1,16 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject Highscore;
+
+    private void Start()
+    {
+        this.Highscore.SetActive(false);
+    }
+
     public void ButtonExit()
     {
         Application.Quit();
@@ -16,6 +24,8 @@ public class MainMenu : MonoBehaviour
 
     public void ButtonHighscore()
     {
-        SceneManager.LoadScene("Scenes/Highscore");
+        Debug.Log("Show Highscore");
+        
+        this.Highscore.SetActive(true);
     }
 }

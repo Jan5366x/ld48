@@ -135,7 +135,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e751911cf6ed8291a8b9375642000909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  maxStamina: 100
+  stamina: 100
+  minSprintStartStamina: 20
+  staminaUsagePerSec: 10
+  staminaRecoveryPerSec: 5
+  walkingSpeed: 5
+  sprintSpeed: 10
+  previousSprint: 0
   lastDirectionV: 0
   lastDirectionH: 0
   weapon: {fileID: 4322984357245960697}

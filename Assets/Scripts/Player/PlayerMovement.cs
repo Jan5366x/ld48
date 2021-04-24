@@ -53,8 +53,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (idle)
         {
-            rigidbody.position = new Vector2(Mathf.Round(rigidbody.position.x), Mathf.Round(rigidbody.position.y));
+            rigidbody.position = new Vector2(
+                Mathf.Round(rigidbody.position.x * 32) / 32f,
+                Mathf.Round(rigidbody.position.y * 32) / 32f
+            );
         }
+
         Debug.Log(rigidbody.position);
 
         foreach (Animator animator in GetComponentsInChildren<Animator>())

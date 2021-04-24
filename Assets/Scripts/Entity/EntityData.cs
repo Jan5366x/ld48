@@ -5,8 +5,8 @@ using Random = UnityEngine.Random;
 [Serializable]
 public class EntityData
 {
-    public float health;
-    public float maxHealth;
+    public float health = 100;
+    public float maxHealth = 100;
     public Transform onDeathPrefab;
     public Transform onDamagePrefab;
     public Rect splatterArea;
@@ -32,13 +32,16 @@ public class EntityData
     {
         health -= amount;
 
-        Transform newTransform = Transform.Instantiate(onDamagePrefab, transform);
-        newTransform.Translate(Random.Range(splatterArea.xMin, splatterArea.xMax),
-            Random.Range(splatterArea.yMin, splatterArea.yMax), 0);
-        Animation animator = newTransform.GetComponent<Animation>();
-        if (animator)
+        if (onDamagePrefab)
         {
-            animator.wrapMode = WrapMode.Once;
+            Transform newTransform = Transform.Instantiate(onDamagePrefab, transform);
+            newTransform.Translate(Random.Range(splatterArea.xMin, splatterArea.xMax),
+                Random.Range(splatterArea.yMin, splatterArea.yMax), 0);
+            Animation animator = newTransform.GetComponent<Animation>();
+            if (animator)
+            {
+                animator.wrapMode = WrapMode.Once;
+            }
         }
 
         RandomizedSound.Play(transform, RandomizedSound.HURT);

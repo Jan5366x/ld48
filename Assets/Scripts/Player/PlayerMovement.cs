@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
-        bool isSprint = Player.CalculateStaminaTick(Input.GetButton("Fire1"));
+        bool isSprint = Player.CalculateStaminaTick(Input.GetButton("Fire3"));
         previousSprint = isSprint;
         speed = isSprint ? sprintSpeed : walkingSpeed;
 

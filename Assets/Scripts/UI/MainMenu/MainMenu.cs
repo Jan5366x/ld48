@@ -29,9 +29,6 @@ public class MainMenu : MonoBehaviour
    
         // TODO: kommt in start und dient zum debuggen.
         this.ScaleMenuItems();
-        
-        
-        Debug.Log($"a:{this.Camera.aspect} w:{this.Camera.pixelWidth} d:{this.Camera.depth}");
     }
 
     private void ScaleMenuItems()
@@ -56,7 +53,7 @@ public class MainMenu : MonoBehaviour
     public void ButtonCredit()
     {
         this.Credits.SetActive(true);
-        //this.MenuButtons.SetActive(false);
+        this.MenuButtons.SetActive(false);
     }
 
     public void ButtonExit()
@@ -76,7 +73,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Show Highscore");
         
         this.Highscore.SetActive(true);
-        //this.MenuButtons.SetActive(false);
+        this.MenuButtons.SetActive(false);
     }
     
     public void ButtonBackToMainMenu()
@@ -84,6 +81,6 @@ public class MainMenu : MonoBehaviour
         this.Highscore.SetActive(false);
         this.Credits.SetActive(false);
         
-        // this.MenuButtons.SetActive(true);
+        this.MenuButtons.SetActive(true);
     }
 }

@@ -1458,7 +1458,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 947046952}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: StartPlaying
+        m_MethodName: ButtonPlaying
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2163,7 +2163,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 947046952}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ExitButton
+        m_MethodName: ButtonExit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

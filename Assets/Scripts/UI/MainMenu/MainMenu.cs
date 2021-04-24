@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
         this.ScaleMenuItems();
         
         
-        //Debug.Log($"{this.Camera}");
+        Debug.Log($"a:{this.Camera.aspect} w:{this.Camera.pixelWidth} d:{this.Camera.depth}");
     }
 
     private void ScaleMenuItems()

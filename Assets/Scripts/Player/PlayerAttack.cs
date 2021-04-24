@@ -14,14 +14,14 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.DrawLine(transform.position, transform.position + Vector3.up * 2);
-            Debug.DrawLine(transform.position, transform.position + Vector3.down * 2);
-            Debug.DrawLine(transform.position, transform.position + Vector3.left * 2);
-            Debug.DrawLine(transform.position, transform.position + Vector3.right * 2);
+            Debug.DrawLine(transform.position, transform.position + Vector3.up * 2, Color.black, 1f);
+            Debug.DrawLine(transform.position, transform.position + Vector3.down * 2, Color.black, 1f);
+            Debug.DrawLine(transform.position, transform.position + Vector3.left * 2, Color.black, 1f);
+            Debug.DrawLine(transform.position, transform.position + Vector3.right * 2, Color.black, 1f);
             var overlapCircleAll = Physics2D.OverlapCircleAll(transform.position, 2);
-            Debug.Log(overlapCircleAll);
             foreach (var collider in overlapCircleAll)
             {
+                if(collider.isTrigger) continue;
                 Enemy enemy = collider.GetComponent<Enemy>();
                 if (enemy)
                 {

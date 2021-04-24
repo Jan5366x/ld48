@@ -34,11 +34,18 @@
             this.lblWorkDir = new System.Windows.Forms.Label();
             this.txtLayerCount = new System.Windows.Forms.TextBox();
             this.lblLayerCount = new System.Windows.Forms.Label();
+            this.txtTcR = new System.Windows.Forms.TextBox();
+            this.txtTcG = new System.Windows.Forms.TextBox();
+            this.txtTcB = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbxTransparentColor = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(205, 137);
+            this.btnGenerate.Location = new System.Drawing.Point(205, 209);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(122, 32);
             this.btnGenerate.TabIndex = 0;
@@ -48,7 +55,7 @@
             // 
             // txtWorkDir
             // 
-            this.txtWorkDir.Location = new System.Drawing.Point(12, 93);
+            this.txtWorkDir.Location = new System.Drawing.Point(12, 88);
             this.txtWorkDir.Name = "txtWorkDir";
             this.txtWorkDir.Size = new System.Drawing.Size(315, 20);
             this.txtWorkDir.TabIndex = 3;
@@ -56,7 +63,7 @@
             // 
             // lblWorkDir
             // 
-            this.lblWorkDir.Location = new System.Drawing.Point(12, 72);
+            this.lblWorkDir.Location = new System.Drawing.Point(12, 67);
             this.lblWorkDir.Name = "lblWorkDir";
             this.lblWorkDir.Size = new System.Drawing.Size(104, 18);
             this.lblWorkDir.TabIndex = 4;
@@ -78,11 +85,77 @@
             this.lblLayerCount.TabIndex = 6;
             this.lblLayerCount.Text = "Layer Count:";
             // 
+            // txtTcR
+            // 
+            this.txtTcR.Location = new System.Drawing.Point(12, 164);
+            this.txtTcR.Name = "txtTcR";
+            this.txtTcR.Size = new System.Drawing.Size(42, 20);
+            this.txtTcR.TabIndex = 7;
+            this.txtTcR.Text = "0";
+            // 
+            // txtTcG
+            // 
+            this.txtTcG.Location = new System.Drawing.Point(60, 164);
+            this.txtTcG.Name = "txtTcG";
+            this.txtTcG.Size = new System.Drawing.Size(42, 20);
+            this.txtTcG.TabIndex = 8;
+            this.txtTcG.Text = "250";
+            // 
+            // txtTcB
+            // 
+            this.txtTcB.Location = new System.Drawing.Point(108, 164);
+            this.txtTcB.Name = "txtTcB";
+            this.txtTcB.Size = new System.Drawing.Size(42, 20);
+            this.txtTcB.TabIndex = 9;
+            this.txtTcB.Text = "255";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(12, 147);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 14);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "R";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(60, 147);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 14);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "G";
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(108, 147);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 14);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "B";
+            // 
+            // cbxTransparentColor
+            // 
+            this.cbxTransparentColor.Checked = true;
+            this.cbxTransparentColor.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxTransparentColor.Location = new System.Drawing.Point(9, 129);
+            this.cbxTransparentColor.Name = "cbxTransparentColor";
+            this.cbxTransparentColor.Size = new System.Drawing.Size(141, 15);
+            this.cbxTransparentColor.TabIndex = 14;
+            this.cbxTransparentColor.Text = "transparent color";
+            this.cbxTransparentColor.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 199);
+            this.ClientSize = new System.Drawing.Size(339, 254);
+            this.Controls.Add(this.cbxTransparentColor);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtTcB);
+            this.Controls.Add(this.txtTcG);
+            this.Controls.Add(this.txtTcR);
             this.Controls.Add(this.lblLayerCount);
             this.Controls.Add(this.txtLayerCount);
             this.Controls.Add(this.lblWorkDir);
@@ -96,6 +169,23 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.CheckBox cbxTransparentColor;
+
+        private System.Windows.Forms.CheckBox checkBox1;
+
+        private System.Windows.Forms.TextBox txtTcB;
+
+        private System.Windows.Forms.TextBox txtTcG;
+
+        private System.Windows.Forms.TextBox txtTcR;
+
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
 
         private System.Windows.Forms.TextBox txtLayerCount;
         private System.Windows.Forms.Label lblLayerCount;

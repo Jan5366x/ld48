@@ -1,15 +1,16 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class RandomizedSound : MonoBehaviour
 {
     public static string HURT = "Audio/Hurt";
+    public static string DIE = "Audio/Die";
     public static string ATTACK = "Audio/Attack";
     public static string MOVEMENT = "Audio/Movement";
     public static string SPOTTED = "Audio/Spotted";
+    public static string MONEY = "Audio/Money";
+    public static string HEAL = "Audio/Heal";
     public WeightedAudioClip[] sounds;
 
     private static Dictionary<string, int> lastPlayedSlots = new Dictionary<string, int>();

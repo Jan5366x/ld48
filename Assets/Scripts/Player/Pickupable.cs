@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Pickupable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int money;
+    public int healing;
+    public Transform onPickupPrefab;
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        
+        Player player = other.gameObject.GetComponentInChildren<Player>();
+        if (player)
+        {
+            player.CollectMoney(money);
+            player.Heal(healing);
+            Instantiate(onPickupPrefab, other.transform);
+            Destroy(gameObject);
+        }
     }
 }

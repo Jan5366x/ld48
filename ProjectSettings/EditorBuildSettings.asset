@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JanWorkspace.unity
     guid: 5d05ef68f6fe03b49b738a44c84734a2
+  - enabled: 0
+    path: Assets/Scenes/Codexzier_Workspace.unity
+    guid: 98bdbc9541b8f2e47945ffd6bf983e85
   m_configObjects: {}

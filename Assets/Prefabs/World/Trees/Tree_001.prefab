@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2800260736099176169}
   - component: {fileID: 3744525358906616437}
   - component: {fileID: 8675647008738388996}
+  - component: {fileID: 4505685927453324866}
+  - component: {fileID: 5838539721455980842}
   m_Layer: 0
   m_Name: Tree_001_C
   m_TagString: Untagged
@@ -97,6 +99,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childLayerOffset: 1
+--- !u!114 &4505685927453324866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415616074447504719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b310263fe703342bcc15104224b59d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minOpacity: 0.3
+  fadeOutDuration: 0.5
+  fadeInDuration: 0.5
+--- !u!61 &5838539721455980842
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415616074447504719}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.04, y: 1.18}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.58, y: 1.54}
+  m_EdgeRadius: 0
 --- !u!1 &8875836815395452213
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8549035068394930839}
   - component: {fileID: 4254828464136314333}
-  - component: {fileID: -2110151294335499050}
+  - component: {fileID: 2557586151316335928}
   m_Layer: 0
   m_Name: Tree_001
   m_TagString: Untagged
@@ -241,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundOffset: 0.17
---- !u!58 &-2110151294335499050
+--- !u!58 &2557586151316335928
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,4 +299,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.02, y: 0.15}
   serializedVersion: 2
-  m_Radius: 0.04
+  m_Radius: 0.05

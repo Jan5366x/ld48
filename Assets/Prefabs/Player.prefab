@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 2876993706048798768}
   - component: {fileID: -1874724318198287628}
   - component: {fileID: 4817876483309946936}
+  - component: {fileID: 8850059667667411436}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -179,9 +180,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0.11}
+  m_Size: {x: 0.36, y: 0.09}
+  m_Direction: 1
 --- !u!114 &4817876483309946936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +213,22 @@ MonoBehaviour:
   staminaRecoveryPerSec: 5
   previousSprint: 0
   numMoney: 0
+--- !u!70 &8850059667667411436
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876993706048798774}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.48}
+  m_Size: {x: 0.44, y: 0.82}
+  m_Direction: 0
 --- !u!1 &2876993706236763243
 GameObject:
   m_ObjectHideFlags: 0

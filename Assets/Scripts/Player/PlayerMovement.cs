@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public const String DIRECTION = "Direction";
     public const String SHOW_RIGHT = "ShowRight";
     public float movementSpeed = 5;
-    private bool forceIdleWeapon;
     public int lastDirection = 0;
+    public Transform weapon;
 
     // Update is called once per frame
     private void FixedUpdate()
@@ -59,8 +59,6 @@ public class PlayerMovement : MonoBehaviour
             );
         }
 
-        Debug.Log(rigidbody.position);
-
         foreach (Animator animator in GetComponentsInChildren<Animator>())
         {
             if (idle)
@@ -99,40 +97,32 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        AbstractWeapon weapon = GetComponentInChildren<AbstractWeapon>();
-        HandleWeapon(weapon, idle, idle ? lastDirection : directionComponent);
+        ReAnchorWeapon(idle, idle ? lastDirection : directionComponent);
     }
 
 
-    private void HandleWeapon(AbstractWeapon weapon, bool idle, int direction)
+    private void ReAnchorWeapon(bool idle, int direction)
     {
         if (weapon)
         {
-            if (!idle || forceIdleWeapon)
+            if (!idle)
             {
                 switch (direction)
                 {
                     case 0:
-                        weapon.transform.SetParent(transform.Find("HandForwards"), false);
+                        weapon.SetParent(transform.Find("HandForwards"), false);
                         break;
                     case 1:
-                        weapon.transform.SetParent(transform.Find("HandLeft"), false);
+                        weapon.SetParent(transform.Find("HandLeft"), false);
                         break;
                     case 2:
-                        weapon.transform.SetParent(transform.Find("HandBackwards"), false);
+                        weapon.SetParent(transform.Find("HandBackwards"), false);
                         break;
                     case 3:
-                        weapon.transform.SetParent(transform.Find("HandRight"), false);
+                        weapon.SetParent(transform.Find("HandRight"), false);
                         break;
                 }
             }
-
-            forceIdleWeapon = false;
         }
-    }
-
-    public void OnSwitchWeapon()
-    {
-        forceIdleWeapon = true;
     }
 }

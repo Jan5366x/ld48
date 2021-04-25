@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class WorldTile : MonoBehaviour
 {
-    public static readonly int POLLUTION_DISPLAY_MIN = 30;
-    public GameObject spawnerPrefab;
-
     [Range(0, WorldController.MAX_POLLUTION)]
     public int Pollution;
 
@@ -43,18 +40,21 @@ public class WorldTile : MonoBehaviour
         SpawnOrDespawnInfection();
         DisableTileSpriteRenderIfPossible();
 
-        if (Pollution >= POLLUTION_DISPLAY_MIN)
+        if (Pollution >= WorldController.POLLUTION_DISPLAY_MIN)
         {
-            var spriteRenderer = _infectionObject.GetComponent<SpriteRenderer>();
-            var color = spriteRenderer.color;
-            color.a = (float) Pollution / WorldController.MAX_POLLUTION;
-            spriteRenderer.color = color;
+            if (_infectionObject)
+            {
+                var spriteRenderer = _infectionObject.GetComponent<SpriteRenderer>();
+                var color = spriteRenderer.color;
+                color.a = (float) Pollution / WorldController.MAX_POLLUTION;
+                spriteRenderer.color = color;
+            }
         }
     }
 
     private void SpawnOrDespawnInfection()
     {
-        if (Pollution <= POLLUTION_DISPLAY_MIN && _infectionObject != null)
+        if (Pollution <= WorldController.POLLUTION_DISPLAY_MIN && _infectionObject != null)
         {
             if (Application.isPlaying)
             {
@@ -67,7 +67,7 @@ public class WorldTile : MonoBehaviour
 
             _infectionObject = null;
         }
-        else if (Pollution >= POLLUTION_DISPLAY_MIN && _infectionObject == null)
+        else if (Pollution >= WorldController.POLLUTION_DISPLAY_MIN && _infectionObject == null)
         {
             _infectionObject = Instantiate(Infection, transform);
         }
@@ -86,10 +86,5 @@ public class WorldTile : MonoBehaviour
                 _tileSpriteRenderer.enabled = true;
             }
         }
-    }
-
-    public void PlaceSpawner()
-    {
-        Instantiate(spawnerPrefab, transform);
     }
 }

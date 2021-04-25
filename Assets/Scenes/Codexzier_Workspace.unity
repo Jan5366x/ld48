@@ -2666,6 +2666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 803408555}
   - component: {fileID: 803408556}
+  - component: {fileID: 803408557}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -2758,6 +2759,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 803408557}
+        m_TargetAssemblyTypeName: MasterAdjuster, Assembly-CSharp
+        m_MethodName: SetMaster
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &803408557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803408554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d92948375d471abccadd2649e60fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 0}
 --- !u!1 &817006770
 GameObject:
   m_ObjectHideFlags: 0

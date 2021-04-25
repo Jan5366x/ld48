@@ -1,24 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 public class WorldTile : MonoBehaviour
 {
-
     public static readonly int POLLUTION_DISPLAY_MIN = 30;
-    
-    [Range(0, WorldController.MAX_POLLUTION)] public int Pollution;
-    public bool AllowPollution;
-    
+    public GameObject spawnerPrefab;
+
+    [Range(0, WorldController.MAX_POLLUTION)]
+    public int Pollution;
+
+    public bool AllowPollution = false;
+
     public GameObject Infection;
-    
+
     private int _lastPollution;
     private GameObject _infectionObject;
 
     private SpriteRenderer _tileSpriteRenderer;
-    
+
     private void Awake()
     {
         _tileSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -28,18 +27,19 @@ public class WorldTile : MonoBehaviour
     {
         Pollution = pollution;
     }
-    
-    void OnDrawGizmos() 
+
+    void OnDrawGizmos()
     {
         if (AllowPollution)
         {
             Handles.Label(transform.position, Pollution.ToString());
         }
     }
+
     private void Update()
     {
         if (!AllowPollution || _lastPollution == Pollution) return;
-        
+
         SpawnOrDespawnInfection();
         DisableTileSpriteRenderIfPossible();
 
@@ -62,7 +62,7 @@ public class WorldTile : MonoBehaviour
             }
             else
             {
-              DestroyImmediate(_infectionObject);  
+                DestroyImmediate(_infectionObject);
             }
 
             _infectionObject = null;
@@ -86,5 +86,10 @@ public class WorldTile : MonoBehaviour
                 _tileSpriteRenderer.enabled = true;
             }
         }
+    }
+
+    public void PlaceSpawner()
+    {
+        Instantiate(spawnerPrefab, transform);
     }
 }

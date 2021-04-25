@@ -6,6 +6,7 @@ using Random = Unity.Mathematics.Random;
 public class WorldController : MonoBehaviour
 {
     private static Random _random;
+    public const int POLLUTION_DISPLAY_MIN = 30;
     public const int WORLD_SIZE = 10;
     public const int MAX_POLLUTION = 255;
     private static WorldTile[,] tiles;
@@ -20,6 +21,13 @@ public class WorldController : MonoBehaviour
 
     public float infectionSpreadDuration = 2;
     public float infectionSpreadTime = 0;
+
+    public float coinSpreadDuration = 2;
+    public float coinSpreadTime = 0;
+
+    public GameObject spawnerPrefab;
+    public GameObject coinPrefab;
+    public GameObject healingCrystalPrefab;
 
     public void InitializeTiles()
     {
@@ -132,7 +140,7 @@ public class WorldController : MonoBehaviour
             {
                 spawners.Add(Tuple.Create(x, y));
                 WorldTile tile = tiles[x, y];
-                tile.PlaceSpawner();
+                Instantiate(spawnerPrefab, tile.transform);
                 return;
             }
         }
@@ -207,6 +215,7 @@ public class WorldController : MonoBehaviour
     {
         infectionSpreadTime -= Time.deltaTime;
         spawnerPlaceTime -= Time.deltaTime;
+        coinSpreadTime -= Time.deltaTime;
 
         if (infectionSpreadTime < 0)
         {
@@ -232,6 +241,36 @@ public class WorldController : MonoBehaviour
         {
             PlaceSpawner();
             spawnerPlaceTime = spawnerPlaceDuration;
+        }
+
+        if (coinSpreadTime < 0)
+        {
+            SpreadCoin();
+            coinSpreadTime = coinSpreadDuration;
+        }
+    }
+
+    private void SpreadCoin()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            bool isCoin = _random.NextBool();
+            int x = _random.NextInt(WORLD_SIZE);
+            int y = _random.NextInt(WORLD_SIZE);
+
+            if (pollution[x, y] > POLLUTION_DISPLAY_MIN || IsTileBlocked(x, y))
+            {
+                continue;
+            }
+
+            WorldTile tile = tiles[x, y];
+            if (tile)
+            {
+                var delta = new Vector3(_random.NextFloat(-0.3f, 0.3f), _random.NextFloat(-0.3f, 0.3f), 0);
+                Instantiate(isCoin ? coinPrefab : healingCrystalPrefab, tile.transform.position + delta,
+                    Quaternion.identity);
+                return;
+            }
         }
     }
 

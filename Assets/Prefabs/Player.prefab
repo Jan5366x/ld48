@@ -264,8 +264,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.11}
-  m_Size: {x: 0.36, y: 0.09}
+  m_Offset: {x: 0, y: 0.12}
+  m_Size: {x: 0.35, y: 0.12}
   m_Direction: 1
 --- !u!114 &4817876483309946936
 MonoBehaviour:
@@ -308,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healerPrefab: {fileID: 3052685002229949542, guid: 5e61bbde509f1664391ce6f0de221d8f, type: 3}
+  defenseTowerPrefab: {fileID: 7099901301513337100, guid: 794657064d82ef143948579fa60eec0a, type: 3}
 --- !u!1 &2876993706236763243
 GameObject:
   m_ObjectHideFlags: 0

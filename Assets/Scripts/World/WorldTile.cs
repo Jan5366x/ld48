@@ -15,13 +15,14 @@ public class WorldTile : MonoBehaviour
 
     private SpriteRenderer _tileSpriteRenderer;
 
-    private void Awake()
+    private void Start()
     {
         _tileSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void SetPollution(int pollution)
     {
+        _lastPollution = Pollution;
         Pollution = pollution;
     }
 
@@ -40,44 +41,47 @@ public class WorldTile : MonoBehaviour
         SpawnOrDespawnInfection();
         DisableTileSpriteRenderIfPossible();
 
-        if (Pollution >= WorldController.POLLUTION_DISPLAY_MIN)
+        if (_infectionObject)
         {
-            if (_infectionObject)
-            {
-                var spriteRenderer = _infectionObject.GetComponent<SpriteRenderer>();
-                var color = spriteRenderer.color;
-                color.a = (float) Pollution / WorldController.MAX_POLLUTION;
-                spriteRenderer.color = color;
-            }
+            var spriteRenderer = _infectionObject.GetComponent<SpriteRenderer>();
+            var color = spriteRenderer.color;
+            color.a = (float) Pollution / WorldController.MAX_POLLUTION;
+            spriteRenderer.color = color;
         }
     }
 
     private void SpawnOrDespawnInfection()
     {
-        if (Pollution <= WorldController.POLLUTION_DISPLAY_MIN && _infectionObject != null)
+        if (Pollution <= WorldController.POLLUTION_DISPLAY_MIN)
         {
-            if (Application.isPlaying)
+            if (_infectionObject)
             {
-                Destroy(_infectionObject);
-            }
-            else
-            {
-                DestroyImmediate(_infectionObject);
-            }
+                if (Application.isPlaying)
+                {
+                    Destroy(_infectionObject);
+                }
+                else
+                {
+                    DestroyImmediate(_infectionObject);
+                }
 
-            _infectionObject = null;
+                _infectionObject = null;
+            }
         }
-        else if (Pollution >= WorldController.POLLUTION_DISPLAY_MIN && _infectionObject == null)
+        else
         {
-            _infectionObject = Instantiate(Infection, transform);
+            if (!_infectionObject)
+            {
+                _infectionObject = Instantiate(Infection, transform);
+            }
         }
     }
 
     private void DisableTileSpriteRenderIfPossible()
     {
-        if (_tileSpriteRenderer != null)
+        if (_tileSpriteRenderer)
         {
-            if (Pollution == WorldController.MAX_POLLUTION)
+            if (Pollution >= WorldController.MAX_POLLUTION)
             {
                 _tileSpriteRenderer.enabled = false;
             }

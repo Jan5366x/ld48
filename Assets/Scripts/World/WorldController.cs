@@ -108,7 +108,14 @@ public class WorldController : MonoBehaviour
 
                     if (xx < 0 || yy < 0 || xx >= WORLD_SIZE || yy >= WORLD_SIZE) continue;
 
-                    pollution[xx, yy] = Math.Max(0, pollution[xx, yy] - 20);
+                    if (i == 0 && j == 0)
+                    {
+                        pollution[xx, yy] = 0;
+                    }
+                    else
+                    {
+                        pollution[xx, yy] = Math.Max(0, pollution[xx, yy] - 20);
+                    }
                 }
             }
         }

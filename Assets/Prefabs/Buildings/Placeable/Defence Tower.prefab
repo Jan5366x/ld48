@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 2923839130642857725}
   - component: {fileID: 277216680229868253}
   - component: {fileID: 7012546656292131919}
+  - component: {fileID: 238482418471186086}
   m_Layer: 0
   m_Name: Defence Tower
   m_TagString: Untagged
@@ -228,6 +229,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!95 &238482418471186086
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099901301513337100}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 66d8ce9ccb1a3205da2a82e66c4a3703, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8859153112103147621
 GameObject:
   m_ObjectHideFlags: 0

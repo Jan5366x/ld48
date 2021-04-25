@@ -6,16 +6,30 @@ public class DefenseTower : MonoBehaviour
     public List<Enemy> enemiesInRange = new List<Enemy>();
 
     public GameObject projectilePrefab;
-    
+
     public float aggressionCoolDown = 5;
     public float aggressionTimer = 0;
 
     private void Update()
     {
-        aggressionTimer -= Time.deltaTime;
-        if (aggressionTimer < 0)
+        Animator animator = transform.parent.GetComponent<Animator>();
+        if (enemiesInRange.Count == 0)
         {
-            if (enemiesInRange.Count > 0)
+            aggressionTimer = aggressionCoolDown;
+            AnimationHelper.SetParameter(animator, "Idle", true);
+            AnimationHelper.SetParameter(animator, "AggressionStep", 0);
+        }
+        else
+        {
+            var inverseLerp = Mathf.InverseLerp(0, aggressionCoolDown, aggressionTimer);
+            var lerp = Mathf.Lerp(4, 0, inverseLerp);
+            int aggressionStep = (int) lerp;
+
+            AnimationHelper.SetParameter(animator, "Idle", false);
+            AnimationHelper.SetParameter(animator, "AggressionStep", aggressionStep);
+
+            aggressionTimer -= Time.deltaTime;
+            if (aggressionTimer < 0)
             {
                 Enemy enemy = enemiesInRange[Random.Range(0, enemiesInRange.Count)];
                 if (enemy)

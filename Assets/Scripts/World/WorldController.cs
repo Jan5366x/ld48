@@ -5,14 +5,15 @@ using Random = Unity.Mathematics.Random;
 
 public class WorldController : MonoBehaviour
 {
-    private Random _random;
-    public const int WORLD_SIZE = 3;
+    private static Random _random;
+    public const int WORLD_SIZE = 10;
     public const int MAX_POLLUTION = 255;
-    private WorldTile[,] tiles;
-    private bool[,] buildable;
-    private int[,] pollution;
-    private List<Tuple<int, int>> spawners;
-    private List<Tuple<int, int>> healers;
+    private static WorldTile[,] tiles;
+    private static bool[,] buildable;
+    private static bool[,] pollutable;
+    private static int[,] pollution;
+    private static List<Tuple<int, int>> spawners;
+    private static List<Tuple<int, int>> healers;
 
     public float spawnerPlaceDuration = 30;
     public float spawnerPlaceTime = 30;
@@ -24,6 +25,7 @@ public class WorldController : MonoBehaviour
     {
         tiles = new WorldTile[WORLD_SIZE, WORLD_SIZE];
         buildable = new bool[WORLD_SIZE, WORLD_SIZE];
+        pollutable = new bool[WORLD_SIZE, WORLD_SIZE];
         pollution = new int[WORLD_SIZE, WORLD_SIZE];
         spawners = new List<Tuple<int, int>>();
         healers = new List<Tuple<int, int>>();
@@ -32,19 +34,39 @@ public class WorldController : MonoBehaviour
         {
             for (int y = 0; y < WORLD_SIZE; y++)
             {
+                pollution[x, y] = 0;
+                pollutable[x, y] = false;
+                buildable[x, y] = false;
+
                 GameObject ground = GameObject.Find("G-" + x + "-" + y);
                 if (ground)
                 {
                     WorldTile tile = ground.GetComponent<WorldTile>();
+                    buildable[x, y] = tile;
                     if (tile)
                     {
                         tiles[x, y] = tile;
+                        pollutable[x, y] = tile.AllowPollution;
+                        pollution[x, y] = tile.Pollution;
                     }
-
-                    buildable[x, y] = true;
-                    pollution[x, y] = 0;
                 }
             }
+        }
+
+        foreach (var o in GameObject.FindGameObjectsWithTag("Spawner"))
+        {
+            int x = (int) o.transform.position.x;
+            int y = (int) o.transform.position.y;
+
+            spawners.Add(Tuple.Create(x, y));
+        }
+
+        foreach (var o in GameObject.FindGameObjectsWithTag("Healer"))
+        {
+            int x = (int) o.transform.position.x;
+            int y = (int) o.transform.position.y;
+
+            healers.Add(Tuple.Create(x, y));
         }
     }
 
@@ -57,7 +79,7 @@ public class WorldController : MonoBehaviour
                 for (int j = -10; j <= 10; j++)
                 {
                     int xx = spawner.Item1 + i;
-                    int yy = spawner.Item2 + i;
+                    int yy = spawner.Item2 + j;
 
                     if (xx < 0 || yy < 0 || xx >= WORLD_SIZE || yy >= WORLD_SIZE) continue;
 
@@ -82,7 +104,7 @@ public class WorldController : MonoBehaviour
                 for (int j = -10; j <= 10; j++)
                 {
                     int xx = healer.Item1 + i;
-                    int yy = healer.Item2 + i;
+                    int yy = healer.Item2 + j;
 
                     if (xx < 0 || yy < 0 || xx >= WORLD_SIZE || yy >= WORLD_SIZE) continue;
 
@@ -102,6 +124,8 @@ public class WorldController : MonoBehaviour
             if (!IsTileBlocked(x, y))
             {
                 spawners.Add(Tuple.Create(x, y));
+                WorldTile tile = tiles[x, y];
+                tile.PlaceSpawner();
                 return;
             }
         }
@@ -109,7 +133,7 @@ public class WorldController : MonoBehaviour
         Debug.Log("Tried 10 Times to place a new spawner.... No success");
     }
 
-    public bool DeleteSpawner(int x, int y)
+    public static bool DeleteSpawner(int x, int y)
     {
         for (var i = spawners.Count - 1; i >= 0; i--)
         {
@@ -123,7 +147,7 @@ public class WorldController : MonoBehaviour
         return false;
     }
 
-    public bool PlaceHealer(int x, int y)
+    public static bool PlaceHealer(int x, int y)
     {
         if (IsTileBlocked(x, y))
         {
@@ -134,7 +158,7 @@ public class WorldController : MonoBehaviour
         return true;
     }
 
-    private bool IsTileBlocked(int x, int y)
+    private static bool IsTileBlocked(int x, int y)
     {
         if (x < 0 || y < 0 || x > WORLD_SIZE || y > WORLD_SIZE)
         {
@@ -186,8 +210,6 @@ public class WorldController : MonoBehaviour
             {
                 for (int y = 0; y < WORLD_SIZE; y++)
                 {
-                    Debug.Log(x + " " + y + ": " + pollution[x, y] + " " + IsTileBlocked(x, y));
-
                     WorldTile tile = tiles[x, y];
                     if (tile)
                     {
@@ -204,5 +226,16 @@ public class WorldController : MonoBehaviour
             PlaceSpawner();
             spawnerPlaceTime = spawnerPlaceDuration;
         }
+    }
+
+    public static Tuple<int, int> PositionByName(String name)
+    {
+        if (name.StartsWith("G-"))
+        {
+            var parts = name.Split('-');
+            return Tuple.Create(int.Parse(parts[1]), int.Parse(parts[2]));
+        }
+
+        return null;
     }
 }

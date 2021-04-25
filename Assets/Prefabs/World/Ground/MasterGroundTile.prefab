@@ -72,7 +72,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84da194400dd85b40ac3b70679baeae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerPrefab: {fileID: 3052685002229949542, guid: 4a9d59d10ac6bb24d89cabeebdf35ff6, type: 3}
   Pollution: 0
+  AllowPollution: 0
   Infection: {fileID: 1062753325766956359, guid: 4f98496884abdc947b7da33d716460e3, type: 3}
 --- !u!212 &-570746111073476445
 SpriteRenderer:

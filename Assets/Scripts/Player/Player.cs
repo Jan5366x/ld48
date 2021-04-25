@@ -62,4 +62,15 @@ public class Player : MonoBehaviour
 
         numMoney += money;
     }
+
+    public static bool UseMoney(int amount)
+    {
+        if (numMoney < amount)
+        {
+            return false;
+        }
+
+        numMoney -= amount;
+        return true;
+    }
 }

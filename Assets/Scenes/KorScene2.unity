@@ -8495,26 +8495,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 472863695}
     m_Modifications:
-    - target: {fileID: -1874724318198287628, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
-      propertyPath: m_Size.x
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: -1874724318198287628, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
-      propertyPath: m_Size.y
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: -1874724318198287628, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -1874724318198287628, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: -1874724318198287628, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
-      propertyPath: m_Direction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2283550320392656972, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
       propertyPath: groundOffset
       value: 0.08

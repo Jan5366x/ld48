@@ -112,8 +112,8 @@ public class Enemy : MonoBehaviour
 
         foreach (var collider in Physics2D.OverlapCircleAll(transform.position, senseRange))
         {
-            var defenseTower = collider.GetComponent<DefenseTower>();
-            if (defenseTower)
+            var playerBuilding = collider.GetComponent<PlayerBuilding>();
+            if (playerBuilding)
             {
                 validTargets.Add(collider.gameObject);
             }
@@ -168,10 +168,10 @@ public class Enemy : MonoBehaviour
                     }
                     else
                     {
-                        var defenseTower = validTarget.GetComponent<DefenseTower>();
-                        if (defenseTower)
+                        var playerBuilding = validTarget.GetComponent<PlayerBuilding>();
+                        if (playerBuilding)
                         {
-                            defenseTower.entity.TakeDamage(defenseTower.transform, damage);
+                            playerBuilding.entity.TakeDamage(playerBuilding.transform, damage);
                             didAggress = true;
                         }
                     }

@@ -131,23 +131,28 @@ public class WorldController : MonoBehaviour
 
     private void PlaceSpawner()
     {
-        for (int numTries = 0; numTries < 100; numTries++)
+        List<Tuple<int, int>> spawnableSpaces = new List<Tuple<int, int>>();
+        for (int x = 0; x < WORLD_SIZE; x++)
         {
-            int x = _random.NextInt(WORLD_SIZE);
-            int y = _random.NextInt(WORLD_SIZE);
-
-            Debug.Log("Spawning at " + x + " " + y);
-
-            if (!IsTileBlocked(x, y))
+            for (int y = 0; y < WORLD_SIZE; y++)
             {
-                spawners.Add(Tuple.Create(x, y));
-                WorldTile tile = tiles[x, y];
-                Instantiate(spawnerPrefab, tile.transform);
-                return;
+                if (pollution[x, y] > 0 && !IsTileBlocked(x, y))
+                {
+                    spawnableSpaces.Add(Tuple.Create(x, y));
+                }
             }
         }
 
-        Debug.Log("Tried 100 Times to place a new spawner.... No success");
+        if (spawnableSpaces.Count == 0)
+        {
+            Debug.Log("You win the game!");
+            return;
+        }
+
+        Tuple<int, int> space = spawnableSpaces[_random.NextInt(spawnableSpaces.Count)];
+        spawners.Add(space);
+        WorldTile tile = tiles[space.Item1, space.Item2];
+        Instantiate(spawnerPrefab, tile.transform);
     }
 
     public static bool DeleteSpawner(int x, int y)

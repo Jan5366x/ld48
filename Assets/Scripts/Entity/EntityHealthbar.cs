@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyHealthBar : MonoBehaviour
+public class EntityHealthbar : MonoBehaviour
 {
     public float width = 50;
     public float height = 5;
@@ -18,10 +18,10 @@ public class EnemyHealthBar : MonoBehaviour
                 return;
             }
 
-            DefenseTower tower = transform.parent.GetComponentInChildren<DefenseTower>();
-            if (tower)
+            PlayerBuilding playerBuilding = transform.parent.GetComponentInChildren<PlayerBuilding>();
+            if (playerBuilding)
             {
-                DrawHealthBar(tower.entity);
+                DrawHealthBar(playerBuilding.entity);
             }
         }
     }

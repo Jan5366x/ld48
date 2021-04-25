@@ -6,9 +6,7 @@ public class DefenseTower : MonoBehaviour
     public List<Enemy> enemiesInRange = new List<Enemy>();
 
     public GameObject projectilePrefab;
-
-    public EntityData entity;
-
+    
     public float aggressionCoolDown = 5;
     public float aggressionTimer = 0;
 
@@ -33,22 +31,10 @@ public class DefenseTower : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other);
         var enemy = other.GetComponent<Enemy>();
         if (enemy)
         {
             enemiesInRange.Add(enemy);
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        Debug.Log(other);
-        var enemy = other.GetComponent<Enemy>();
-        if (enemy)
-        {
-            if (!enemiesInRange.Contains(enemy))
-                enemiesInRange.Add(enemy);
         }
     }
 

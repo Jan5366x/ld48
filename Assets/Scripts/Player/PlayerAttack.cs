@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject healerPrefab;
+    public GameObject defenseTowerPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,18 @@ public class PlayerAttack : MonoBehaviour
                     Instantiate(healerPrefab, new Vector3(x, y, 0f), Quaternion.identity);
                     Player.UseMoney(5);
                 }
+            }
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            int x = Mathf.RoundToInt(transform.position.x);
+            int y = Mathf.RoundToInt(transform.position.y);
+
+            if (Player.numMoney >= 5)
+            {
+                Instantiate(defenseTowerPrefab, new Vector3(x, y, 0f), Quaternion.identity);
+                Player.UseMoney(5);
             }
         }
     }

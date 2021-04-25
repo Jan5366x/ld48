@@ -26,14 +26,6 @@ public class WorldTile : MonoBehaviour
         Pollution = pollution;
     }
 
-    void OnDrawGizmos()
-    {
-        if (AllowPollution)
-        {
-            Handles.Label(transform.position, Pollution.ToString());
-        }
-    }
-
     private void Update()
     {
         if (!AllowPollution || _lastPollution == Pollution) return;
@@ -91,4 +83,14 @@ public class WorldTile : MonoBehaviour
             }
         }
     }
+    
+#if UNITY_EDITOR
+    void OnDrawGizmos()
+    {
+        if (AllowPollution)
+        {
+            Handles.Label(transform.position, Pollution.ToString());
+        }
+    }
+#endif
 }

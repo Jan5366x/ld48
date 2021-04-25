@@ -37,7 +37,6 @@ public class PlayerAttack : MonoBehaviour
             int x = Mathf.RoundToInt(transform.position.x);
             int y = Mathf.RoundToInt(transform.position.y);
 
-            Player.numMoney += 10;
             if (Player.numMoney >= 5)
             {
                 if (WorldController.PlaceHealer(x, -y))

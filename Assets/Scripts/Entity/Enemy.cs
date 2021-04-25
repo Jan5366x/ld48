@@ -118,8 +118,10 @@ public class Enemy : MonoBehaviour
                 Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
                 if (rigidbody)
                 {
+                    bool isAggressive = playerDistance < aggressionRange && aggressionTimer < 0;
+                    AnimationHelper.SetParameter(GetComponent<Animator>(), "Aggressive", isAggressive);
                     rigidbody.AddForce(rigidbody.mass *
-                                       (playerDistance < aggressionRange ? speedAggressive : speedNormal) *
+                                       (isAggressive ? speedAggressive : speedNormal) *
                                        delta.normalized);
                 }
             }

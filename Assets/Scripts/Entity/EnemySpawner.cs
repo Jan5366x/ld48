@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
         if (other.gameObject.GetComponent<Player>())
         {
             playerInRange = true;
-            transform.parent.GetComponent<Animator>().SetBool("Active", true);
+            AnimationHelper.SetParameter(transform.parent.GetComponent<Animator>(), "Active", true);
         }
     }
 
@@ -45,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
         if (other.gameObject.GetComponent<Player>())
         {
             playerInRange = false;
-            transform.parent.GetComponent<Animator>().SetBool("Active", false);
+            AnimationHelper.SetParameter(transform.parent.GetComponent<Animator>(), "Active", false);
         }
     }
 }

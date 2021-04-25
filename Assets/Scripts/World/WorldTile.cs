@@ -42,10 +42,13 @@ public class WorldTile : MonoBehaviour
 
         if (Pollution >= WorldController.POLLUTION_DISPLAY_MIN)
         {
-            var spriteRenderer = _infectionObject.GetComponent<SpriteRenderer>();
-            var color = spriteRenderer.color;
-            color.a = (float) Pollution / WorldController.MAX_POLLUTION;
-            spriteRenderer.color = color;
+            if (_infectionObject)
+            {
+                var spriteRenderer = _infectionObject.GetComponent<SpriteRenderer>();
+                var color = spriteRenderer.color;
+                color.a = (float) Pollution / WorldController.MAX_POLLUTION;
+                spriteRenderer.color = color;
+            }
         }
     }
 

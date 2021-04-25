@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     public const String IDLE = "Idle";
     public const String DIRECTION_H = "DirectionH";
     public const String DIRECTION_V = "DirectionV";
-    public const String SHOW_RIGHT = "ShowRight";
 
     [ReadOnly] public float speed;
     public float walkingSpeed = 5;
@@ -75,40 +74,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (idle)
             {
-                if (AnimationHelper.hasParameter(animator, IDLE))
-                {
-                    animator.SetBool(IDLE, true);
-                }
+                AnimationHelper.SetParameter(animator, IDLE, true);
             }
             else
             {
                 RandomizedSound.Play(transform, RandomizedSound.MOVEMENT);
-                if (AnimationHelper.hasParameter(animator, IDLE))
-                {
-                    animator.SetBool(IDLE, false);
-                }
-
-                if (AnimationHelper.hasParameter(animator, DIRECTION_H))
-                {
-                    animator.SetInteger(DIRECTION_H, directionH);
-                }
-
-                if (AnimationHelper.hasParameter(animator, DIRECTION_V))
-                {
-                    animator.SetInteger(DIRECTION_V, directionV);
-                }
-
-                if (AnimationHelper.hasParameter(animator, SHOW_RIGHT))
-                {
-                    if (right)
-                    {
-                        animator.SetBool(SHOW_RIGHT, true);
-                    }
-                    else
-                    {
-                        animator.SetBool(SHOW_RIGHT, false);
-                    }
-                }
+                AnimationHelper.SetParameter(animator, IDLE, false);
+                AnimationHelper.SetParameter(animator, DIRECTION_H, directionH);
+                AnimationHelper.SetParameter(animator, DIRECTION_V, directionV);
 
                 lastDirectionV = directionV;
                 lastDirectionH = directionH;

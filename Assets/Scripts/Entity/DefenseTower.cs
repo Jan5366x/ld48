@@ -25,8 +25,6 @@ public class DefenseTower : MonoBehaviour
             var lerp = Mathf.Lerp(4, 0, inverseLerp);
             int aggressionStep = (int) lerp;
 
-            Debug.Log($"{aggressionTimer} {aggressionCoolDown} {inverseLerp} {lerp} {aggressionStep}");
-
             AnimationHelper.SetParameter(animator, "Idle", false);
             AnimationHelper.SetParameter(animator, "AggressionStep", aggressionStep);
 

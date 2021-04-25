@@ -1,66 +1,47 @@
 using System;
 using TMPro;
-using UI.MainMenu;
+using UI.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HeadUpDisplay : MonoBehaviour
+public class HeadUpDisplay : BaseMenu
 {
-    public Camera Camera;
+    public Camera cam;
+    public UiManager uiManager;
 
-    #region Other content
-
-    public GameObject BreakMenu;
-    public GameObject GameOver;
-
-    #endregion
-
-    // Start is called before the first frame update
     private void Start()
     {
-        this.SetScaleUiElements();
         this.SetStateValues(1f, 1f, 1f);
-        this.CoinCounter.text = "0";
-        this.InfectedTime.text = "00:00:00";
+        this.tmpCoinCounter.text = "0";
+        this.tmpInfectedTime.text = "00:00:00";
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        // TODO: Muss noch abgeglichen werden mit IMPUT
+        // TODO: Muss noch abgeglichen werden mit INPUT
         if (Input.GetKey(KeyCode.Escape))
         {
-            this.gameObject.SetActive(false);
-            this.BreakMenu.SetActive(true);
+            this.uiManager.ButtonBreakMenuShow();
             return;
         }
-        
+
         // Test
-        this.InfectedTime.text = $"{DateTime.Now:hh:mm:ss}";
-        this.SetScaleUiElements();
+        this.tmpInfectedTime.text = $"{DateTime.Now:hh:mm:ss}";
 
         var space = Input.GetKey(KeyCode.Space);
         var leftControl = Input.GetKey(KeyCode.LeftControl);
 
         if (leftControl && space)
         {
-            // open gameove and the highscore result
-            this.gameObject.SetActive(false);
-            this.GameOver.SetActive(true);
+            this.uiManager.ButtonScoreResult();
         }
-    }
-
-    private void SetScaleUiElements()
-    {
-        this.Top.ScaleByAspectAndPixelHeight(this.Camera, 1000);
-        this.Bottom.ScaleByAspectAndPixelHeight(this.Camera, 1000);
     }
 
     private void SetStateValues(float health, float stamina, float infectionState)
     {
-        SetValueIfBetweenMinMax(this.Health, health);
-        SetValueIfBetweenMinMax(this.Stamina, stamina);
-        SetValueIfBetweenMinMax(this.InfectionState, infectionState);
+        SetValueIfBetweenMinMax(this.sliderHealth, health);
+        SetValueIfBetweenMinMax(this.sliderStamina, stamina);
+        SetValueIfBetweenMinMax(this.sliderInfectionState, infectionState);
 
         static void SetValueIfBetweenMinMax(Slider slider, float value)
         {
@@ -71,17 +52,33 @@ public class HeadUpDisplay : MonoBehaviour
         }
     }
 
+    public override void ScaleElements(float aspect)
+    {
+        this.screenElementsTop.ScaleByAspectAndPixelHeight(this.cam, 1000);
+        this.screenElementsBottom.ScaleByAspectAndPixelHeight(this.cam, 1000);
+    }
+
+    public override void Show()
+    {
+        this.gameObject.SetActive(true);
+    }
+
+    public override void Hide()
+    {
+        this.gameObject.SetActive(false);
+    }
+
     #region Game content
 
-    public GameObject Top;
-    public GameObject Bottom;
+    public GameObject screenElementsTop;
+    public GameObject screenElementsBottom;
 
-    public Slider Health;
-    public Slider Stamina;
-    public Slider InfectionState;
+    public Slider sliderHealth;
+    public Slider sliderStamina;
+    public Slider sliderInfectionState;
 
-    public TMP_Text CoinCounter;
-    public TMP_Text InfectedTime;
+    public TMP_Text tmpCoinCounter;
+    public TMP_Text tmpInfectedTime;
 
     #endregion
 }

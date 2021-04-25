@@ -1,12 +1,10 @@
-using UI.MainMenu;
+using UI.Base;
 using UnityEngine;
 
-public class BreakMenu : MonoBehaviour
+public class BreakMenu : BaseMenu
 {
-    public Camera Camera;
-    
     public GameObject GameHUD;
-    
+
     public GameObject Banner;
     public GameObject MenuButtons;
 
@@ -15,52 +13,28 @@ public class BreakMenu : MonoBehaviour
     public GameObject ControlAndSound;
 
     #endregion
-    
+
     private void Start()
     {
-        this.ScaleMenuItems();
-        
         this.ControlAndSound.SetActive(true);
     }
 
-    private void Update()
+    public override void ScaleElements(float aspect)
     {
-        
-        
-        // TODO: nur beim testen nötig
-        ScaleMenuItems();
-    }
-
-    private void ScaleMenuItems()
-    {
-        var aspect = this.Camera.aspect;
         this.Banner.ScaleByAspect(aspect);
         this.MenuButtons.ScaleByAspect(aspect);
     }
 
-    public void ButtonContinue()
-    {
-        this.gameObject.SetActive(false);
-        this.GameHUD.SetActive(true);
-    }
-
-    public void ButtonToMainMenu()
-    {
-        this.gameObject.SetActive(false);
-        
-        // TODO: Test, sollte zugewiesen vom aktuellen GameState
-        GameState.GameIsRun = true;
-    }
-
-    public void ButtonShowBreakMenu()
+    public override void Show()
     {
         this.gameObject.SetActive(true);
         this.ControlAndSound.SetActive(true);
+
+        GameState.GameIsRun = true;
     }
 
-    public void ButtonCloseTheGame()
+    public override void Hide()
     {
-        Debug.Log("Close the game");
-        Application.Quit();
+        this.gameObject.SetActive(false);
     }
 }

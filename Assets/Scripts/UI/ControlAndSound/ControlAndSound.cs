@@ -1,42 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using UI.MainMenu;
+using UI.Base;
 using UnityEngine;
 
-public class ControlAndSound : MonoBehaviour
+public class ControlAndSound : BaseMenu
 {
-    public Camera Camera;
-    
     public GameObject SoundOption;
     public GameObject ControlDescriptions;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        this.ScaleMenuItems();
-    }
 
-    // Update is called once per frame
-    void Update()
+    public override void ScaleElements(float aspect)
     {
-        
-        // TODO: nur beim testen nötig
-        this.ScaleMenuItems();
-    }
-    
-    private void ScaleMenuItems()
-    {
-        var aspect = this.Camera.aspect;
         this.SoundOption.ScaleByAspect(aspect);
         this.ControlDescriptions.ScaleByAspect(aspect);
     }
 
-    public void ButtonShowControlAndSound()
+    public override void Show()
     {
         this.gameObject.SetActive(true);
     }
-    
-    public void ButtonHideControlAndSound()
+
+    public override void Hide()
     {
         this.gameObject.SetActive(false);
     }

@@ -1,39 +1,26 @@
-using System;
-using UI.MainMenu;
+using UI.Base;
 using UnityEngine;
 
-public class ScoreResult : MonoBehaviour
+public class ScoreResult : BaseMenu
 {
-    public Camera Camera;
+    public GameObject banner;
+    public GameObject scoreContent;
 
-    public GameObject Banner;
-    public GameObject ScoreContent;
-
-    public GameObject HUD;
-    private void Start()
+    public override void ScaleElements(float aspect)
     {
-        this.ScaleMenuItems();
+        this.banner.ScaleByAspect(aspect);
+        this.scoreContent.ScaleByAspect(aspect);
     }
 
-    private void Update()
+    public override void Show()
     {
-        this.ScaleMenuItems();
+        this.gameObject.SetActive(true);
+
+        GameState.GameIsRun = false;
     }
 
-    public void ButtonClose()
+    public override void Hide()
     {
         this.gameObject.SetActive(false);
-    }
-
-    private void ScaleMenuItems()
-    {
-        var aspect = this.Camera.aspect;
-        this.Banner.ScaleByAspect(aspect);
-        this.ScoreContent.ScaleByAspect(aspect);
-    }
-
-    public void ActionHideHUD()
-    {
-        this.HUD.SetActive(false);
     }
 }

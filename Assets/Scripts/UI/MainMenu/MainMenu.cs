@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
         // TODO: nur beim testen nötig
         this.ScaleMenuItems();
     }
-
+    
     private void ScaleMenuItems()
     {
         var aspect = this.Camera.aspect;
@@ -82,6 +82,13 @@ public class MainMenu : MonoBehaviour
         this.Highscore.SetActive(false);
         this.Credits.SetActive(false);
         
+        this.MenuButtons.SetActive(true);
+    }
+
+    public void ButtonShowMainMenu()
+    {
+        Debug.Log("Open Main Menu from break display");
+        this.gameObject.SetActive(true);
         this.MenuButtons.SetActive(true);
     }
 }

@@ -7,10 +7,10 @@ public class WorldController : MonoBehaviour
 {
     private Random _random;
     public const int WORLD_SIZE = 3;
-    private const int MAX_POLLUTION = 255;
+    public const int MAX_POLLUTION = 255;
     private WorldTile[,] tiles;
     private bool[,] buildable;
-    public int[,] pollution;
+    private int[,] pollution;
     private List<Tuple<int, int>> spawners;
     private List<Tuple<int, int>> healers;
 
@@ -167,7 +167,7 @@ public class WorldController : MonoBehaviour
 
     private void Awake()
     {
-        _random = new Random((uint) (1337 * (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds));
+        _random = new Random((uint) (1337 * (Int32) (DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds));
         InitializeTiles();
     }
 
@@ -176,11 +176,25 @@ public class WorldController : MonoBehaviour
     {
         infectionSpreadTime -= Time.deltaTime;
         spawnerPlaceTime -= Time.deltaTime;
-        
+
         if (infectionSpreadTime < 0)
         {
             SpreadInfection();
             SpreadHealing();
+
+            for (int x = 0; x < WORLD_SIZE; x++)
+            {
+                for (int y = 0; y < WORLD_SIZE; y++)
+                {
+                    Debug.Log(x + " " + y + ": " + pollution[x, y] + " " + IsTileBlocked(x, y));
+
+                    WorldTile tile = tiles[x, y];
+                    if (tile)
+                    {
+                        tile.SetPollution(pollution[x, y]);
+                    }
+                }
+            }
 
             infectionSpreadTime = infectionSpreadDuration;
         }

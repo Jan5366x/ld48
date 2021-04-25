@@ -7,7 +7,7 @@ public class WorldController : MonoBehaviour
 {
     private static Random _random;
     public const int POLLUTION_DISPLAY_MIN = 30;
-    public const int WORLD_SIZE = 10;
+    public const int WORLD_SIZE = 20;
     public const int MAX_POLLUTION = 255;
     private static WorldTile[,] tiles;
     private static bool[,] buildable;
@@ -91,7 +91,7 @@ public class WorldController : MonoBehaviour
 
                     if (xx < 0 || yy < 0 || xx >= WORLD_SIZE || yy >= WORLD_SIZE) continue;
 
-                    float infectionProbability = 1f / Math.Abs(i * j);
+                    float infectionProbability = 1f / (Math.Abs(i) + Math.Abs(j));
 
                     if (_random.NextFloat() < infectionProbability)
                     {
@@ -131,10 +131,12 @@ public class WorldController : MonoBehaviour
 
     private void PlaceSpawner()
     {
-        for (int numTries = 0; numTries < 10; numTries++)
+        for (int numTries = 0; numTries < 100; numTries++)
         {
             int x = _random.NextInt(WORLD_SIZE);
             int y = _random.NextInt(WORLD_SIZE);
+
+            Debug.Log("Spawning at " + x + " " + y);
 
             if (!IsTileBlocked(x, y))
             {
@@ -145,7 +147,7 @@ public class WorldController : MonoBehaviour
             }
         }
 
-        Debug.Log("Tried 10 Times to place a new spawner.... No success");
+        Debug.Log("Tried 100 Times to place a new spawner.... No success");
     }
 
     public static bool DeleteSpawner(int x, int y)
@@ -252,7 +254,7 @@ public class WorldController : MonoBehaviour
 
     private void SpreadCoin()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 100; i++)
         {
             bool isCoin = _random.NextBool();
             int x = _random.NextInt(WORLD_SIZE);

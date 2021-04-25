@@ -1,4 +1,3 @@
-using System;
 using UI.MainMenu;
 using UnityEngine;
 
@@ -11,9 +10,17 @@ public class BreakMenu : MonoBehaviour
     public GameObject Banner;
     public GameObject MenuButtons;
 
+    #region Others and from other displays
+
+    public GameObject ControlAndSound;
+
+    #endregion
+    
     private void Start()
     {
-        ScaleMenuItems();
+        this.ScaleMenuItems();
+        
+        this.ControlAndSound.SetActive(true);
     }
 
     private void Update()
@@ -40,10 +47,20 @@ public class BreakMenu : MonoBehaviour
     public void ButtonToMainMenu()
     {
         this.gameObject.SetActive(false);
+        
+        // TODO: Test, sollte zugewiesen vom aktuellen GameState
+        GameState.GameIsRun = true;
+    }
+
+    public void ButtonShowBreakMenu()
+    {
+        this.gameObject.SetActive(true);
+        this.ControlAndSound.SetActive(true);
     }
 
     public void ButtonCloseTheGame()
     {
+        Debug.Log("Close the game");
         Application.Quit();
     }
 }

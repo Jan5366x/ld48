@@ -15,7 +15,7 @@ public class HeadUpDisplay : BaseMenu
         this.tmpCoinCounter.text = "0";
         this.tmpInfectedTime.text = "00:00:00";
     }
-
+    
     private void Update()
     {
         // TODO: Muss noch abgeglichen werden mit INPUT
@@ -36,6 +36,8 @@ public class HeadUpDisplay : BaseMenu
             this.uiManager.ButtonScoreResult();
         }
     }
+    
+    
 
     private void SetStateValues(float health, float stamina, float infectionState)
     {
@@ -54,8 +56,8 @@ public class HeadUpDisplay : BaseMenu
 
     public override void ScaleElements(float aspect)
     {
-        this.screenElementsTop.ScaleByAspectAndPixelHeight(this.cam, 1000);
-        this.screenElementsBottom.ScaleByAspectAndPixelHeight(this.cam, 1000);
+        this.screenElementsTop.ScaleByAspectAndPixelHeightAndMinWidth(this.cam, 1000);
+        this.screenElementsBottom.ScaleByAspectAndPixelHeightAndMinWidth(this.cam, 1000);
     }
 
     public override void Show()

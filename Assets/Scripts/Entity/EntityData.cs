@@ -26,7 +26,7 @@ public class EntityData
             RandomizedSound.Play(transform, RandomizedSound.HEAL);
         }
 
-        health = Mathf.Max(maxHealth, health + amount);
+        health = Mathf.Min(maxHealth, health + amount);
     }
 
     public void TakeDamage(Transform transform, float amount)

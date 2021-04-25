@@ -42,7 +42,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 if (WorldController.PlaceHealer(x, -y))
                 {
-                    Debug.Log("Placing Spawner at " + x + " " + y);
+                    Debug.Log("Placing Healer at " + x + " " + y);
                     Instantiate(healerPrefab, new Vector3(x, y, 0f), Quaternion.identity);
                     Player.UseMoney(5);
                 }

@@ -10,16 +10,27 @@ public class Player : MonoBehaviour
     public static float staminaUsagePerSec = 10;
     public static float staminaRecoveryPerSec = 5;
 
+    public static float timeLoad;
+
     public static bool previousSprint;
 
     public static int numMoney;
 
+    public Transform playerDieTriggerPrefab;
+
     // Restore non static health after level transition
     public static EntityData entity = new EntityData();
+    public static bool initializeOnLoad = true;
 
-    private void Awake()
+    private void Start()
     {
-        ResetPlayerData();
+        if (initializeOnLoad)
+        {
+            ResetPlayerData();
+            entity.onDeathPrefab = playerDieTriggerPrefab;
+            timeLoad = Time.time;
+            initializeOnLoad = false;
+        }
     }
 
     public static void ResetPlayerData()

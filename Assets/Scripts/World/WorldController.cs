@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = Unity.Mathematics.Random;
 
 public class WorldController : MonoBehaviour
@@ -28,6 +29,22 @@ public class WorldController : MonoBehaviour
     public GameObject spawnerPrefab;
     public GameObject coinPrefab;
     public GameObject healingCrystalPrefab;
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        _random = new Random((uint) (1337 * (Int32) (DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds));
+        InitializeTiles();
+    }
 
     public void InitializeTiles()
     {
@@ -64,7 +81,7 @@ public class WorldController : MonoBehaviour
         foreach (var o in GameObject.FindGameObjectsWithTag("Spawner"))
         {
             int x = (int) o.transform.position.x;
-            int y = (int) o.transform.position.y;
+            int y = (int) -o.transform.position.y;
 
             spawners.Add(Tuple.Create(x, y));
         }
@@ -72,7 +89,7 @@ public class WorldController : MonoBehaviour
         foreach (var o in GameObject.FindGameObjectsWithTag("Healer"))
         {
             int x = (int) o.transform.position.x;
-            int y = (int) o.transform.position.y;
+            int y = (int) -o.transform.position.y;
 
             healers.Add(Tuple.Create(x, y));
         }
@@ -211,13 +228,6 @@ public class WorldController : MonoBehaviour
         return false;
     }
 
-    private void Awake()
-    {
-        _random = new Random((uint) (1337 * (Int32) (DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds));
-        InitializeTiles();
-    }
-
-
     private void Update()
     {
         infectionSpreadTime -= Time.deltaTime;
@@ -255,6 +265,37 @@ public class WorldController : MonoBehaviour
             SpreadCoin();
             coinSpreadTime = coinSpreadDuration;
         }
+
+        GameOverHandler.victoryCondition = CheckVictoryCondition();
+        Debug.Log(GameOverHandler.victoryCondition);
+    }
+
+    private bool CheckVictoryCondition()
+    {
+        for (int x = 0; x < WORLD_SIZE; x++)
+        {
+            for (int y = 0; y < WORLD_SIZE; y++)
+            {
+                if (pollutable[x, y])
+                {
+                    if (pollution[x, y] > POLLUTION_DISPLAY_MIN)
+                    {
+                        Debug.DrawLine(new Vector3(x, -y, 0), new Vector3(x + 1, -y - 1, 0), Color.red, 1f);
+                        return false;
+                    }
+                }
+            }
+        }
+
+        foreach (var spawner in spawners)
+        {
+            Debug.Log(spawner);
+            Debug.DrawLine(new Vector3(spawner.Item1, -spawner.Item2, 0),
+                new Vector3(spawner.Item1 + 1, -spawner.Item2 - 1, 0), Color.green, 1f);
+        }
+
+        Debug.DrawLine(new Vector3(0, 0, 0), new Vector3(spawners.Count, -spawners.Count, 0), Color.green, 1f);
+        return spawners.Count == 0;
     }
 
     private void SpreadCoin()

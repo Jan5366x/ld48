@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UI.MainMenu;
 using UnityEngine;
@@ -10,17 +8,12 @@ public class HeadUpDisplay : MonoBehaviour
 {
     public Camera Camera;
 
-    public GameObject Top;
-    public GameObject Bottom;
-    
-    
-    public Slider Health;
-    public Slider Stamina;
-    public Slider InfectionState;
+    #region Other content
 
-    public TMP_Text CoinCounter;
-    public TMP_Text InfectedTime;
-    
+    public GameObject BreakMenu;
+
+    #endregion
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -31,8 +24,16 @@ public class HeadUpDisplay : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        // TODO: Muss noch abgeglichen werden mit IMPUT
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            this.gameObject.SetActive(false);
+            this.BreakMenu.SetActive(true);
+            return;
+        }
+
         // Test
         this.InfectedTime.text = $"{DateTime.Now:hh:mm:ss}";
         this.SetScaleUiElements();
@@ -54,8 +55,22 @@ public class HeadUpDisplay : MonoBehaviour
         {
             if (value >= slider.minValue && value <= slider.maxValue)
             {
-                slider.value = value;   
+                slider.value = value;
             }
         }
     }
+
+    #region Game content
+
+    public GameObject Top;
+    public GameObject Bottom;
+
+    public Slider Health;
+    public Slider Stamina;
+    public Slider InfectionState;
+
+    public TMP_Text CoinCounter;
+    public TMP_Text InfectedTime;
+
+    #endregion
 }

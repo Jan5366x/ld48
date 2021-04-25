@@ -22,7 +22,6 @@ public class UiManager : MonoBehaviour
         this._menus.Add(this.scoreResult);
         this._menus.Add(this.hud);
         
-        
         this.ButtonMainMenuShow();
     }
 

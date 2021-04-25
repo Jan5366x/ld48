@@ -6,8 +6,6 @@ public class BreakMenu : MonoBehaviour
 {
     public Camera Camera;
     
-    public GameObject MainMenu;
-
     public GameObject GameHUD;
     
     public GameObject Banner;
@@ -41,7 +39,6 @@ public class BreakMenu : MonoBehaviour
 
     public void ButtonToMainMenu()
     {
-        this.MainMenu.SetActive(true);
         this.gameObject.SetActive(false);
     }
 

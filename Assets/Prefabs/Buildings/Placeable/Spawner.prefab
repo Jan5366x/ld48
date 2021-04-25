@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5205328247150442891}
   - component: {fileID: 5904519455848245193}
   - component: {fileID: 1204657927813620446}
+  - component: {fileID: 4899352507404732712}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Spawner
@@ -166,6 +167,27 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   minDistance: 0.1
   delta: {x: 0, y: 0, z: 0}
+--- !u!50 &4899352507404732712
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052685002229949542}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1000000
+  m_LinearDrag: 1000000
+  m_AngularDrag: 1000000
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &7869017983313452311
 GameObject:
   m_ObjectHideFlags: 0

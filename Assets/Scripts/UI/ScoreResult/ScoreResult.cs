@@ -9,6 +9,7 @@ public class ScoreResult : MonoBehaviour
     public GameObject Banner;
     public GameObject ScoreContent;
 
+    public GameObject HUD;
     private void Start()
     {
         this.ScaleMenuItems();
@@ -29,5 +30,10 @@ public class ScoreResult : MonoBehaviour
         var aspect = this.Camera.aspect;
         this.Banner.ScaleByAspect(aspect);
         this.ScoreContent.ScaleByAspect(aspect);
+    }
+
+    public void ActionHideHUD()
+    {
+        this.HUD.SetActive(false);
     }
 }

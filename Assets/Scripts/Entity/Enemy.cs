@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -34,6 +35,8 @@ public class Enemy : MonoBehaviour
     public float minDistance = 0.1f;
     public Vector3 delta;
 
+    public List<GameObject> validTargets;
+
     private void Start()
     {
         homePosition = transform.position;
@@ -48,6 +51,17 @@ public class Enemy : MonoBehaviour
         {
             targetPosition = player.transform.position;
             return;
+        }
+
+        foreach (var validTarget in validTargets)
+        {
+            float distance = Vector3.Distance(validTarget.transform.position, transform.position);
+
+            if (distance < senseRange)
+            {
+                targetPosition = validTarget.transform.position;
+                return;
+            }
         }
 
         if (homeDistance < minHomeDistance)
@@ -88,6 +102,24 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void GetAllValidTargets()
+    {
+        validTargets = new List<GameObject>();
+        if (player)
+        {
+            validTargets.Add(player);
+        }
+
+        foreach (var collider in Physics2D.OverlapCircleAll(transform.position, senseRange))
+        {
+            var defenseTower = collider.GetComponent<DefenseTower>();
+            if (defenseTower)
+            {
+                validTargets.Add(collider.gameObject);
+            }
+        }
+    }
+
     private void Update()
     {
         aggressionTimer -= Time.deltaTime;
@@ -96,17 +128,8 @@ public class Enemy : MonoBehaviour
         roamStartTimer -= Time.deltaTime;
 
         LoadPlayer();
-        float playerDistance = Vector3.Distance(player.transform.position, transform.position);
-
-        if (playerDistance < attackRange)
-        {
-            if (aggressionTimer < 0)
-            {
-                Player.entity.TakeDamage(player.transform, damage);
-                aggressionTimer = aggressionCooldown;
-            }
-        }
-
+        GetAllValidTargets();
+        AttackTargetsInRange();
         SelectTargetPosition();
         DrawDebugLines();
 
@@ -118,7 +141,7 @@ public class Enemy : MonoBehaviour
                 Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
                 if (rigidbody)
                 {
-                    bool isAggressive = playerDistance < aggressionRange && aggressionTimer < 0;
+                    bool isAggressive = HasTargetsInAggressionRange() && aggressionTimer < 0;
                     AnimationHelper.SetParameter(GetComponent<Animator>(), "Aggressive", isAggressive);
                     rigidbody.AddForce(rigidbody.mass *
                                        (isAggressive ? speedAggressive : speedNormal) *
@@ -126,6 +149,54 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void AttackTargetsInRange()
+    {
+        if (aggressionTimer < 0)
+        {
+            bool didAggress = false;
+            foreach (var validTarget in validTargets)
+            {
+                float distance = Vector3.Distance(validTarget.transform.position, transform.position);
+                if (distance < attackRange)
+                {
+                    if (validTarget.GetComponent<Player>())
+                    {
+                        Player.entity.TakeDamage(player.transform, damage);
+                        didAggress = true;
+                    }
+                    else
+                    {
+                        var defenseTower = validTarget.GetComponent<DefenseTower>();
+                        if (defenseTower)
+                        {
+                            defenseTower.entity.TakeDamage(defenseTower.transform, damage);
+                            didAggress = true;
+                        }
+                    }
+                }
+            }
+
+            if (didAggress)
+            {
+                aggressionTimer = aggressionCooldown;
+            }
+        }
+    }
+
+    private bool HasTargetsInAggressionRange()
+    {
+        foreach (var validTarget in validTargets)
+        {
+            float distance = Vector3.Distance(validTarget.transform.position, transform.position);
+            if (distance < aggressionRange)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void DrawDebugLines()

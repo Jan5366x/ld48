@@ -11,17 +11,29 @@ public class EnemyHealthBar : MonoBehaviour
     {
         if (true) //!GameOverToggler.triggered)
         {
-            Enemy enemy = transform.parent.GetComponent<Enemy>();
+            Enemy enemy = transform.parent.GetComponentInChildren<Enemy>();
             if (enemy)
             {
-                if (!Mathf.Approximately(enemy.entity.health, enemy.entity.maxHealth))
-                {
-                    var pos = Camera.main.WorldToScreenPoint(transform.position);
-                    Rect rect = new Rect(pos.x - width / 2, Camera.main.pixelHeight - pos.y, width, height);
-                    IMUIHelper.DrawFilledBorderRect(rect, 1, enemy.entity.health / enemy.entity.maxHealth, colorBorder,
-                        colorRemaining);
-                }
+                DrawHealthBar(enemy.entity);
+                return;
             }
+
+            DefenseTower tower = transform.parent.GetComponentInChildren<DefenseTower>();
+            if (tower)
+            {
+                DrawHealthBar(tower.entity);
+            }
+        }
+    }
+
+    private void DrawHealthBar(EntityData entityData)
+    {
+        if (!Mathf.Approximately(entityData.health, entityData.maxHealth))
+        {
+            var pos = Camera.main.WorldToScreenPoint(transform.position);
+            Rect rect = new Rect(pos.x - width / 2, Camera.main.pixelHeight - pos.y, width, height);
+            IMUIHelper.DrawFilledBorderRect(rect, 1, entityData.health / entityData.maxHealth, colorBorder,
+                colorRemaining);
         }
     }
 }

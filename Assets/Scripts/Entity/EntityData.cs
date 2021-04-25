@@ -12,6 +12,7 @@ public class EntityData
     public Rect splatterArea;
 
     public bool wasDead = false;
+    public bool destroyParent = false;
 
     public void Heal(Transform transform, float amount)
     {
@@ -63,6 +64,11 @@ public class EntityData
         RandomizedSound.Play(transform, RandomizedSound.DIE);
 
         // GameOverToggler.OnDeath();
+
+        if (destroyParent)
+        {
+            Transform.Destroy(transform.parent.gameObject);
+        }
 
         Transform.Destroy(transform.gameObject);
     }

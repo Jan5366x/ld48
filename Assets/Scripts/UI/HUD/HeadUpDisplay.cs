@@ -11,6 +11,7 @@ public class HeadUpDisplay : MonoBehaviour
     #region Other content
 
     public GameObject BreakMenu;
+    public GameObject GameOver;
 
     #endregion
 
@@ -33,10 +34,20 @@ public class HeadUpDisplay : MonoBehaviour
             this.BreakMenu.SetActive(true);
             return;
         }
-
+        
         // Test
         this.InfectedTime.text = $"{DateTime.Now:hh:mm:ss}";
         this.SetScaleUiElements();
+
+        var space = Input.GetKey(KeyCode.Space);
+        var leftControl = Input.GetKey(KeyCode.LeftControl);
+
+        if (leftControl && space)
+        {
+            // open gameove and the highscore result
+            this.gameObject.SetActive(false);
+            this.GameOver.SetActive(true);
+        }
     }
 
     private void SetScaleUiElements()

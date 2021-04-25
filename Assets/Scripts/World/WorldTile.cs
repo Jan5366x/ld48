@@ -10,7 +10,7 @@ public class WorldTile : MonoBehaviour
     public static readonly int POLLUTION_DISPLAY_MIN = 30;
     
     [Range(0, WorldController.MAX_POLLUTION)] public int Pollution;
-    public bool AllowPollution = false;
+    public bool AllowPollution;
     
     public GameObject Infection;
     

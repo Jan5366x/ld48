@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class ControlAndSound : BaseMenu
 {
-    public GameObject SoundOption;
-    public GameObject ControlDescriptions;
+    public GameObject soundOption;
+    public GameObject controlDescriptions;
 
     public override void ScaleElements(float aspect)
     {
-        this.SoundOption.ScaleByAspect(aspect);
-        this.ControlDescriptions.ScaleByAspect(aspect);
+        this.soundOption.ScaleByAspect(aspect);
+        this.controlDescriptions.ScaleByAspect(aspect);
     }
 
     public override void Show()

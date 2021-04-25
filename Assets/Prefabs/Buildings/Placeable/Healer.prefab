@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5205328247150442891}
   - component: {fileID: 5904519455848245193}
   m_Layer: 0
-  m_Name: Healer_0
-  m_TagString: Untagged
+  m_Name: Healer
+  m_TagString: Healer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

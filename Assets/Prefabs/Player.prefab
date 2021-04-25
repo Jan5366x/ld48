@@ -307,6 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0f3372d412479968ba630e17742f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healerPrefab: {fileID: 3052685002229949542, guid: 5e61bbde509f1664391ce6f0de221d8f, type: 3}
 --- !u!1 &2876993706236763243
 GameObject:
   m_ObjectHideFlags: 0

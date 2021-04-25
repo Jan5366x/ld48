@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
     public EntityData entity;
     public GameObject player;
     public Vector3 homePosition;
+    public bool canMove = true;
     public float maxHomeDistance = 10;
     public float minHomeDistance = 1;
 
@@ -18,7 +19,7 @@ public class Enemy : MonoBehaviour
     public float aggressionCooldown = 2;
     public float aggressionTimer;
 
-    public float roamRange = 3; 
+    public float roamRange = 3;
     public float roamDuration = 30;
     public float roamTimer = 0;
     public float roamStartDuration = 10;
@@ -109,14 +110,18 @@ public class Enemy : MonoBehaviour
         SelectTargetPosition();
         DrawDebugLines();
 
-        delta = targetPosition - transform.position;
-        if (delta.magnitude > minDistance)
+        if (canMove)
         {
-            Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
-            if (rigidbody)
+            delta = targetPosition - transform.position;
+            if (delta.magnitude > minDistance)
             {
-                rigidbody.AddForce(rigidbody.mass * (playerDistance < aggressionRange ? speedAggressive : speedNormal) *
-                                   delta.normalized);
+                Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+                if (rigidbody)
+                {
+                    rigidbody.AddForce(rigidbody.mass *
+                                       (playerDistance < aggressionRange ? speedAggressive : speedNormal) *
+                                       delta.normalized);
+                }
             }
         }
     }

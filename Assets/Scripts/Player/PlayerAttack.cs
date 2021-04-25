@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public GameObject healerPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +23,28 @@ public class PlayerAttack : MonoBehaviour
             var overlapCircleAll = Physics2D.OverlapCircleAll(transform.position, 2);
             foreach (var collider in overlapCircleAll)
             {
-                if(collider.isTrigger) continue;
+                if (collider.isTrigger) continue;
                 Enemy enemy = collider.GetComponent<Enemy>();
                 if (enemy)
                 {
                     enemy.entity.TakeDamage(collider.transform, 10f);
+                }
+            }
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            int x = Mathf.RoundToInt(transform.position.x);
+            int y = Mathf.RoundToInt(transform.position.y);
+
+            Player.numMoney += 10;
+            if (Player.numMoney >= 5)
+            {
+                if (WorldController.PlaceHealer(x, -y))
+                {
+                    Debug.Log("Placing Spawner at " + x + " " + y);
+                    Instantiate(healerPrefab, new Vector3(x, y, 0f), Quaternion.identity);
+                    Player.UseMoney(5);
                 }
             }
         }

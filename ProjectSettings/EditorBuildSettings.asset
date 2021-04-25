@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Codexzier_Workspace.unity
     guid: 98bdbc9541b8f2e47945ffd6bf983e85
+  - enabled: 1
+    path: Assets/Scenes/KorScene2.unity
+    guid: 18452efa8c8dc39618007cb33c8e74d0
   m_configObjects: {}

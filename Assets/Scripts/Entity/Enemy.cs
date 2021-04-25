@@ -44,13 +44,14 @@ public class Enemy : MonoBehaviour
 
     private void SelectTargetPosition()
     {
-        float playerDistance = Vector3.Distance(player.transform.position, transform.position);
-        float homeDistance = Vector3.Distance(homePosition, transform.position);
-
-        if (playerDistance < senseRange)
+        if (player)
         {
-            targetPosition = player.transform.position;
-            return;
+            float playerDistance = Vector3.Distance(player.transform.position, transform.position);
+            if (playerDistance < senseRange)
+            {
+                targetPosition = player.transform.position;
+                return;
+            }
         }
 
         foreach (var validTarget in validTargets)
@@ -64,6 +65,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        float homeDistance = Vector3.Distance(homePosition, transform.position);
         if (homeDistance < minHomeDistance)
         {
             if (isReturning)
@@ -203,10 +205,13 @@ public class Enemy : MonoBehaviour
     {
         Debug.DrawLine(transform.position, targetPosition, Color.red, 1);
         Debug.DrawLine(transform.position, homePosition, Color.magenta, 1);
-        Vector3 playerDirection = (player.transform.position - transform.position).normalized;
-        Debug.DrawLine(transform.position, transform.position + senseRange * playerDirection, Color.black, 1);
-        Debug.DrawLine(transform.position, transform.position + aggressionRange * playerDirection, Color.blue, 1);
-        Debug.DrawLine(transform.position, transform.position + attackRange * playerDirection, Color.green, 1);
+        if (player)
+        {
+            Vector3 playerDirection = (player.transform.position - transform.position).normalized;
+            Debug.DrawLine(transform.position, transform.position + senseRange * playerDirection, Color.black, 1);
+            Debug.DrawLine(transform.position, transform.position + aggressionRange * playerDirection, Color.blue, 1);
+            Debug.DrawLine(transform.position, transform.position + attackRange * playerDirection, Color.green, 1);
+        }
     }
 
     private void LoadPlayer()

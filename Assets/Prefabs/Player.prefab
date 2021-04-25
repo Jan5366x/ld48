@@ -856,6 +856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5be1ee1d12b2ca36181f7ea873385b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDieTriggerPrefab: {fileID: 1469284187332389007, guid: e8f856107174c25958ba9bb07d67c9e3, type: 3}
 --- !u!70 &8850059667667411436
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

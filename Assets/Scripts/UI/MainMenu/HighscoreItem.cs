@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -12,15 +10,19 @@ public class HighscoreItem : MonoBehaviour
     public void SetValues(string playerName, long score)
     {
         var pn = this.Playername.gameObject.GetComponent<TMP_Text>();
-        if(pn == null)
+        if (pn == null)
+        {
             return;
+        }
 
         pn.text = playerName;
 
         var s = this.Score.GetComponent<TMP_Text>();
-        if(s == null)
+        if (s == null)
+        {
             return;
-        
+        }
+
         s.text = $"{score}";
     }
 }

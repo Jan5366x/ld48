@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        this.ScaleMenuItems();
         this.Highscore.SetActive(false);
         this.Credits.SetActive(false);
     }
@@ -27,7 +28,7 @@ public class MainMenu : MonoBehaviour
     private void Update()
     {
    
-        // TODO: kommt in start und dient zum debuggen.
+        // TODO: nur beim testen nötig
         this.ScaleMenuItems();
     }
 

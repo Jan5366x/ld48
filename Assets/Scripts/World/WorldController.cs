@@ -7,7 +7,7 @@ public class WorldController : MonoBehaviour
 {
     private Random _random;
     public const int WORLD_SIZE = 3;
-    private const int MAX_POLLUTION = 255;
+    public const int MAX_POLLUTION = 255;
     private WorldTile[,] tiles;
     private bool[,] buildable;
     private int[,] pollution;

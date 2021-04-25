@@ -266,8 +266,9 @@ public class WorldController : MonoBehaviour
             coinSpreadTime = coinSpreadDuration;
         }
 
-        GameOverHandler.victoryCondition = CheckVictoryCondition();
-        Debug.Log(GameOverHandler.victoryCondition);
+        // TODO FIXME 
+        //GameOverHandler.victoryCondition = CheckVictoryCondition();
+        //Debug.Log(GameOverHandler.victoryCondition);
     }
 
     private bool CheckVictoryCondition()

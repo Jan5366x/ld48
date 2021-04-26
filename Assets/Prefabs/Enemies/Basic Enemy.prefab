@@ -123,8 +123,8 @@ MonoBehaviour:
   aggressionRange: 3
   attackRange: 1
   damage: 4
-  speedNormal: 1
-  speedAggressive: 3
+  speedNormal: 0.5
+  speedAggressive: 1.5
   aggressionCooldown: 2
   aggressionTimer: 0
   roamRange: 3

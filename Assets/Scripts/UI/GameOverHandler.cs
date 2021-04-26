@@ -14,7 +14,7 @@ public class GameOverHandler : MonoBehaviour
     {
         gameOver = true;
         gameEndTime = Time.time;
-        LoadScene("DeathScene");
+        LoadScene("DieScene");
     }
 
     public void OnVictory()

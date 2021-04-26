@@ -83,6 +83,11 @@ public class WorldTile : MonoBehaviour
             }
         }
     }
+
+    public void ClearCoveringObjects()
+    {
+        // TODO implement
+    }
     
 #if UNITY_EDITOR
     void OnDrawGizmos()

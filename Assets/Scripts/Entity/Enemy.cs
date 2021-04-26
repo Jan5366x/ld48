@@ -135,6 +135,20 @@ public class Enemy : MonoBehaviour
         SelectTargetPosition();
         DrawDebugLines();
 
+
+        bool isAggressive = HasTargetsInAggressionRange() && aggressionTimer < 0;
+        int aggressionState = 0;
+        if (HasTargetsInAggressionRange())
+        {
+            aggressionState = 1;
+            if (HasTargetsInRange(attackRange))
+            {
+                aggressionState = 2;
+            }
+        }
+
+        AnimationHelper.SetParameter(GetComponent<Animator>(), "Aggression", aggressionState);
+
         if (canMove)
         {
             delta = targetPosition - transform.position;
@@ -143,8 +157,6 @@ public class Enemy : MonoBehaviour
                 Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
                 if (rigidbody)
                 {
-                    bool isAggressive = HasTargetsInAggressionRange() && aggressionTimer < 0;
-                    AnimationHelper.SetParameter(GetComponent<Animator>(), "Aggressive", isAggressive);
                     rigidbody.AddForce(rigidbody.mass *
                                        (isAggressive ? speedAggressive : speedNormal) *
                                        delta.normalized);
@@ -189,10 +201,15 @@ public class Enemy : MonoBehaviour
 
     private bool HasTargetsInAggressionRange()
     {
+        return HasTargetsInRange(aggressionRange);
+    }
+
+    private bool HasTargetsInRange(float range)
+    {
         foreach (var validTarget in validTargets)
         {
             float distance = Vector3.Distance(validTarget.transform.position, transform.position);
-            if (distance < aggressionRange)
+            if (distance < range)
             {
                 return true;
             }

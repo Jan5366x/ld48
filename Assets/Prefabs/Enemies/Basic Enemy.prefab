@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5875106573768903713}
   - component: {fileID: 1707232770756420165}
   - component: {fileID: 1588654031051513477}
+  - component: {fileID: 8302698328830012863}
   m_Layer: 0
   m_Name: Basic Enemy
   m_TagString: Untagged
@@ -189,9 +190,28 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.77412033}
+  m_Offset: {x: 0, y: 0.12078416}
   serializedVersion: 2
-  m_Radius: 0.19333363
+  m_Radius: 0.13313818
+--- !u!95 &8302698328830012863
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2656926781143255553}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dea5a3370dc1dc6458a2d25915434df5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3143469585481328267
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +225,7 @@ GameObject:
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

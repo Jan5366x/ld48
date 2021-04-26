@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/KorScene2.unity
     guid: 18452efa8c8dc39618007cb33c8e74d0
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 2c3d82e0dc0ec34089b93b6b7f87aae3
+  - enabled: 1
+    path: Assets/Scenes/DeathScene.unity
+    guid: e3f0e8c1eab49101a82402e17ef59a2c
   m_configObjects: {}

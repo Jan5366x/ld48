@@ -16250,6 +16250,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7467958317640111287, guid: a913c616a331aeb05b8c6a4a23e5a61e, type: 3}
+      propertyPath: isFinal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467958317640111287, guid: a913c616a331aeb05b8c6a4a23e5a61e, type: 3}
       propertyPath: nextLevel
       value: KorScene2
       objectReference: {fileID: 0}

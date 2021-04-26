@@ -235,6 +235,11 @@ public class WorldController : MonoBehaviour
         spawnerPlaceTime -= Time.deltaTime;
         coinSpreadTime -= Time.deltaTime;
 
+        if (GameOverHandler.gameOver)
+        {
+            return;
+        }
+
         if (infectionSpreadTime < 0)
         {
             SpreadInfection();

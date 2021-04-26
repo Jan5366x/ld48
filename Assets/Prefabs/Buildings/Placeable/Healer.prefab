@@ -131,7 +131,7 @@ MonoBehaviour:
   entity:
     health: 100
     maxHealth: 100
-    onDeathPrefab: {fileID: 0}
+    onDeathPrefab: {fileID: 186191694518742937, guid: e0155ea0a31234f32b26ecb864205770, type: 3}
     onDamagePrefab: {fileID: 0}
     splatterArea:
       serializedVersion: 2

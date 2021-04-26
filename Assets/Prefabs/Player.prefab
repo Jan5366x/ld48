@@ -886,7 +886,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healerPrefab: {fileID: 3052685002229949542, guid: 5e61bbde509f1664391ce6f0de221d8f, type: 3}
+  healerPlaceFailedPrefab: {fileID: 1064055086311542241, guid: 07d2839486af8704dbdd256bbcea1de7, type: 3}
   defenseTowerPrefab: {fileID: 7099901301513337100, guid: 794657064d82ef143948579fa60eec0a, type: 3}
+  defenseTowerPlaceFailedPrefab: {fileID: 1064055086311542241, guid: 07d2839486af8704dbdd256bbcea1de7, type: 3}
 --- !u!1 &2876993706236763243
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,7 +964,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 118
   m_Sprite: {fileID: -7789244087771852611, guid: 5375a7615f5515c43b40056db48181f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

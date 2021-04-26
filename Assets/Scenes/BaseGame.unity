@@ -450,6 +450,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5204522194169386631, guid: a913c616a331aeb05b8c6a4a23e5a61e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1835302204}
     - target: {fileID: 5204522194169386633, guid: a913c616a331aeb05b8c6a4a23e5a61e, type: 3}
       propertyPath: m_Name
       value: CameraRoot
@@ -582,5 +586,10 @@ PrefabInstance:
 --- !u!4 &1835302203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2876993706048798769, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
+  m_PrefabInstance: {fileID: 1835302202}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1835302204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2876993706048798774, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
   m_PrefabInstance: {fileID: 1835302202}
   m_PrefabAsset: {fileID: 0}

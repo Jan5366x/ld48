@@ -8,8 +8,9 @@ public class WorldController : MonoBehaviour
 {
     private static Random _random;
     public const int POLLUTION_DISPLAY_MIN = 30;
-    public const int WORLD_SIZE = 20;
-    public const int MAX_POLLUTION = 255;
+    public const int POLLUTION_HEALER_MAX = 5000;
+    public const int WORLD_SIZE = 100;
+    public const int MAX_POLLUTION = 10000;
     private static WorldTile[,] tiles;
     private static bool[,] buildable;
     private static bool[,] pollutable;
@@ -17,8 +18,14 @@ public class WorldController : MonoBehaviour
     private static List<Tuple<int, int>> spawners;
     private static List<Tuple<int, int>> healers;
 
+    public int passiveRemoval = 10;
+    public int healerRemoval = 80;
+    public int spawnerAddingMin = 40;
+    public int spawnerAddingMax = 120;
     public float spawnerPlaceDuration = 30;
     public float spawnerPlaceTime = 30;
+    public int healerRadius = 5;
+    public int spawnerRadius = 10;
 
     public float infectionSpreadDuration = 0.2f;
     public float infectionSpreadTime = 0;
@@ -99,9 +106,9 @@ public class WorldController : MonoBehaviour
     {
         foreach (var spawner in spawners)
         {
-            for (int i = -10; i <= 10; i++)
+            for (int i = -spawnerRadius; i <= spawnerRadius; i++)
             {
-                for (int j = -10; j <= 10; j++)
+                for (int j = -spawnerRadius; j <= spawnerRadius; j++)
                 {
                     int xx = spawner.Item1 + i;
                     int yy = spawner.Item2 + j;
@@ -113,7 +120,7 @@ public class WorldController : MonoBehaviour
 
                     if (_random.NextFloat() < infectionProbability)
                     {
-                        int strength = (int) Mathf.Lerp(3, 1, distance / 20f);
+                        int strength = (int) Mathf.Lerp(spawnerAddingMax, spawnerAddingMin, distance / 20f);
                         pollution[xx, yy] = Math.Min(MAX_POLLUTION, pollution[xx, yy] + strength);
                     }
                 }
@@ -125,9 +132,9 @@ public class WorldController : MonoBehaviour
     {
         foreach (var healer in healers)
         {
-            for (int i = -10; i <= 10; i++)
+            for (int i = -healerRadius; i <= healerRadius; i++)
             {
-                for (int j = -10; j <= 10; j++)
+                for (int j = -healerRadius; j <= healerRadius; j++)
                 {
                     int xx = healer.Item1 + i;
                     int yy = healer.Item2 + j;
@@ -140,7 +147,7 @@ public class WorldController : MonoBehaviour
                     }
                     else
                     {
-                        pollution[xx, yy] = Math.Max(0, pollution[xx, yy] - 2);
+                        pollution[xx, yy] = Math.Max(0, pollution[xx, yy] - healerRemoval);
                     }
                 }
             }
@@ -154,7 +161,7 @@ public class WorldController : MonoBehaviour
         {
             for (int y = 0; y < WORLD_SIZE; y++)
             {
-                if (pollution[x, y] > 0 && !IsTileBlocked(x, y))
+                if (pollution[x, y] > POLLUTION_DISPLAY_MIN && !IsTileBlocked(x, y))
                 {
                     spawnableSpaces.Add(Tuple.Create(x, y));
                 }
@@ -189,7 +196,7 @@ public class WorldController : MonoBehaviour
 
     public static bool PlaceHealer(int x, int y)
     {
-        if (IsTileBlocked(x, y))
+        if (IsTileBlocked(x, y) || pollution[x, y] > POLLUTION_HEALER_MAX)
         {
             return false;
         }
@@ -244,6 +251,7 @@ public class WorldController : MonoBehaviour
         {
             SpreadInfection();
             SpreadHealing();
+            PassiveHealing();
 
             for (int x = 0; x < WORLD_SIZE; x++)
             {
@@ -274,6 +282,17 @@ public class WorldController : MonoBehaviour
 
         GameOverHandler.victoryCondition = CheckVictoryCondition();
         Debug.Log(GameOverHandler.victoryCondition);
+    }
+
+    private void PassiveHealing()
+    {
+        for (int x = 0; x < WORLD_SIZE; x++)
+        {
+            for (int y = 0; y < WORLD_SIZE; y++)
+            {
+                pollution[x, y] = Mathf.Max(0, pollution[x, y] - passiveRemoval);
+            }
+        }
     }
 
     private bool CheckVictoryCondition()

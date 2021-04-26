@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: d2ffde5dec4fa4d47b9457e7fde8db33, type: 3}
+    - target: {fileID: -570746111073476445, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3577514517447253376, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -57,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5026571135597367590, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
       propertyPath: m_Name
-      value: MasterGroundTile
+      value: Grass_Hill_Grass_A_B_L
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}

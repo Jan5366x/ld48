@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterAnimation
+  m_Name: OceanWaterAnimation
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -35,8 +35,6 @@ AnimationClip:
       value: {fileID: -7655527456229970072, guid: 5fb302a1319cf704985580d2adef43de, type: 3}
     - time: 1.1666666
       value: {fileID: -1984912068192422301, guid: 5fb302a1319cf704985580d2adef43de, type: 3}
-    - time: 1.3333334
-      value: {fileID: 8509550459451208454, guid: 5fb302a1319cf704985580d2adef43de, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -64,13 +62,12 @@ AnimationClip:
     - {fileID: 7149751655148466542, guid: 5fb302a1319cf704985580d2adef43de, type: 3}
     - {fileID: -7655527456229970072, guid: 5fb302a1319cf704985580d2adef43de, type: 3}
     - {fileID: -1984912068192422301, guid: 5fb302a1319cf704985580d2adef43de, type: 3}
-    - {fileID: 8509550459451208454, guid: 5fb302a1319cf704985580d2adef43de, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.35
+    m_StopTime: 1.1833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

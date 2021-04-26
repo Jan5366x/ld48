@@ -801,8 +801,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  walkingSpeed: 5
-  sprintSpeed: 10
+  walkingSpeed: 2.5
+  sprintSpeed: 7
   previousSprint: 0
   lastDirectionV: 0
   lastDirectionH: 0

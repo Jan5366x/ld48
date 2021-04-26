@@ -84,6 +84,7 @@ public class WorldTile : MonoBehaviour
         }
     }
 
+    // clears not building objects which are covering the world tile (like trees / small stones)
     public void ClearCoveringObjects()
     {
         // TODO implement

@@ -2197,35 +2197,59 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1422657931}
+      objectReference: {fileID: 1955514976}
     - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1955514976}
+      objectReference: {fileID: 1422657931}
+    - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1422657931}
     - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ButtonMainMenuShow
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ButtonReturnToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UiManager, Assembly-CSharp
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ButtonMainMenuShow
       objectReference: {fileID: 0}
     - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: ButtonMainMenuShow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameOver, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UiManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UiManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356939376698622296, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1356939376698622297, guid: 658ebefb31d815043b7c543a4e2b13c0, type: 3}

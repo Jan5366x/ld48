@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class PlayTimeCounter : MonoBehaviour
 
     private void OnGUI()
     {
-        text.text = "" + (Time.time - Player.timeLoad);
+        TimeSpan t = TimeSpan.FromSeconds(GameOverHandler.gameEndTime - Player.timeLoad);
+        text.text = t.ToString(@"hh\:mm\:ss");
     }
 }

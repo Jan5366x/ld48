@@ -7768,9 +7768,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnerPlaceDuration: 30
   spawnerPlaceTime: 30
-  infectionSpreadDuration: 2
+  infectionSpreadDuration: 0.2
   infectionSpreadTime: 0
-  coinSpreadDuration: 2
+  coinSpreadDuration: 5
   coinSpreadTime: 0
   spawnerPrefab: {fileID: 3052685002229949542, guid: 4a9d59d10ac6bb24d89cabeebdf35ff6, type: 3}
   coinPrefab: {fileID: 5246986285486737531, guid: 723397605d36289dd917158e83a832ac, type: 3}
@@ -16248,6 +16248,10 @@ PrefabInstance:
     - target: {fileID: 6824050686106255441, guid: a913c616a331aeb05b8c6a4a23e5a61e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467958317640111287, guid: a913c616a331aeb05b8c6a4a23e5a61e, type: 3}
+      propertyPath: isFinal
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7467958317640111287, guid: a913c616a331aeb05b8c6a4a23e5a61e, type: 3}
       propertyPath: nextLevel

@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject healerPrefab;
+    public GameObject healerPlaceFailedPrefab;
     public GameObject defenseTowerPrefab;
+    public GameObject defenseTowerPlaceFailedPrefab;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -35,30 +29,48 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetButtonDown("Fire2"))
         {
-            int x = Mathf.RoundToInt(transform.position.x);
-            int y = Mathf.RoundToInt(transform.position.y);
-
-            if (Player.numMoney >= 5)
-            {
-                if (WorldController.PlaceHealer(x, -y))
-                {
-                    Debug.Log("Placing Healer at " + x + " " + y);
-                    Instantiate(healerPrefab, new Vector3(x, y, 0f), Quaternion.identity);
-                    Player.UseMoney(5);
-                }
-            }
+            PlaceHealer();
         }
 
         if (Input.GetButtonDown("Jump"))
         {
-            int x = Mathf.RoundToInt(transform.position.x);
-            int y = Mathf.RoundToInt(transform.position.y);
+            PlaceDefenseTower();
+        }
+    }
 
-            if (Player.numMoney >= 5)
+    private void PlaceHealer()
+    {
+        int x = Mathf.RoundToInt(transform.position.x);
+        int y = Mathf.RoundToInt(transform.position.y);
+
+        if (Player.numMoney >= 5)
+        {
+            if (WorldController.PlaceHealer(x, -y))
+            {
+                Instantiate(healerPrefab, new Vector3(x, y, 0f), Quaternion.identity);
+                Player.UseMoney(5);
+                return;
+            }
+        }
+
+        Instantiate(healerPlaceFailedPrefab, new Vector3(x, y, 0f), Quaternion.identity);
+    }
+
+    private void PlaceDefenseTower()
+    {
+        int x = Mathf.RoundToInt(transform.position.x);
+        int y = Mathf.RoundToInt(transform.position.y);
+
+        if (Player.numMoney >= 5)
+        {
+            if (WorldController.PlaceDefenseTower(x, -y))
             {
                 Instantiate(defenseTowerPrefab, new Vector3(x, y, 0f), Quaternion.identity);
                 Player.UseMoney(5);
+                return;
             }
         }
+
+        Instantiate(defenseTowerPlaceFailedPrefab, new Vector3(x, y, 0f), Quaternion.identity);
     }
 }

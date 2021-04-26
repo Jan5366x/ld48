@@ -6,27 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/JanWorkspace.unity
-    guid: 5d05ef68f6fe03b49b738a44c84734a2
+    path: Assets/Scenes/MainMenu.unity
+    guid: 372d2870cb138754ea1887dabf5c340f
   - enabled: 1
-    path: Assets/Scenes/Codexzier_Workspace.unity
-    guid: 98bdbc9541b8f2e47945ffd6bf983e85
-  - enabled: 0
-    path: Assets/Scenes/KorScene2.unity
-    guid: 18452efa8c8dc39618007cb33c8e74d0
+    path: Assets/Scenes/MainGame.unity
+    guid: b24860a8f04c65fe5aa8533a5beae731
+  - enabled: 1
+    path: Assets/Scenes/MainGame2.unity
+    guid: a1e15605f5124a469ac4d85ad688baea
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 2c3d82e0dc0ec34089b93b6b7f87aae3
   - enabled: 1
     path: Assets/Scenes/DeathScene.unity
     guid: e3f0e8c1eab49101a82402e17ef59a2c
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/JanWorkspace.unity
+    guid: 5d05ef68f6fe03b49b738a44c84734a2
+  - enabled: 0
+    path: Assets/Scenes/Codexzier_Workspace.unity
+    guid: 98bdbc9541b8f2e47945ffd6bf983e85
+  - enabled: 0
+    path: Assets/Scenes/KorScene2.unity
+    guid: 18452efa8c8dc39618007cb33c8e74d0
+  - enabled: 0
     path: Assets/Scenes/Codexzier_Workspace_Test.unity
     guid: 0f340c2d2519a274194705f3060d822d
-  - enabled: 1
-    path: Assets/Scenes/MainGame.unity
-    guid: 1b6260c23cdfb6651ab178dfa3fb45d5
-  - enabled: 1
-    path: Assets/Scenes/MainGame2.unity
-    guid: f316205328549ec28bfbe9dd35abf300
   m_configObjects: {}

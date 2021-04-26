@@ -20,7 +20,13 @@ public class WorldTile : MonoBehaviour
     private void Start()
     {
         _tileSpriteRenderer = GetComponent<SpriteRenderer>();
+        DiscoverPollutableObjects();
+    }
+
+    public void DiscoverPollutableObjects()
+    {
         _pollutableObjects = GetComponentsInChildren<PollutableObject>();
+        UpdatePollutableObjects();
     }
 
     public void SetPollution(int pollution)

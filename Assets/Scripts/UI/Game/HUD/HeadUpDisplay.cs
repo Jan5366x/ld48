@@ -25,15 +25,21 @@ public class HeadUpDisplay : BaseMenu
             return;
         }
 
-        // Test
+        // TODO Only Test
         this.tmpInfectedTime.text = $"{DateTime.Now:hh:mm:ss}";
 
         var space = Input.GetKey(KeyCode.Space);
         var leftControl = Input.GetKey(KeyCode.LeftControl);
+        var leftAlt = Input.GetKey(KeyCode.LeftAlt);
 
         if (leftControl && space)
         {
             this.uiManager.ButtonScoreResult();
+        }
+
+        if (leftControl && leftAlt)
+        {
+            this.uiManager.ButtonGameOverShow();
         }
     }
     

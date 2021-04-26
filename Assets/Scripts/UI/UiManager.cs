@@ -9,8 +9,10 @@ public class UiManager : MonoBehaviour
     public MainMenu mainMenu;
     public BreakMenu breakMenu;
     public ControlAndSound controlAndSound;
-    public HeadUpDisplay hud;
     public ScoreResult scoreResult;
+
+    public HeadUpDisplay hud;
+    public GameOver gameOver;
 
     private readonly List<BaseMenu> _menus = new List<BaseMenu>();
 
@@ -21,7 +23,7 @@ public class UiManager : MonoBehaviour
         this._menus.Add(this.breakMenu);
         this._menus.Add(this.scoreResult);
         this._menus.Add(this.hud);
-        
+        this._menus.Add(this.gameOver);
         this.ButtonMainMenuShow();
     }
 
@@ -46,19 +48,19 @@ public class UiManager : MonoBehaviour
         this.AllHide();
         this._menus.Show<BreakMenu>();
     }
-    
+
     public void ButtonMainMenuShow()
     {
         this.AllHide();
         this._menus.Show<MainMenu>();
         this._menus.Show<ControlAndSound>();
     }
-    
+
     public void ButtonPlay()
     {
         this.AllHide();
         this._menus.Show<HeadUpDisplay>();
-        
+
         // TODO Start game
     }
 
@@ -66,7 +68,7 @@ public class UiManager : MonoBehaviour
     {
         this.AllHide();
         this._menus.Show<HeadUpDisplay>();
-        
+
         // TODO resum game
     }
 
@@ -76,6 +78,12 @@ public class UiManager : MonoBehaviour
         this._menus.Show<ScoreResult>();
     }
     
+    public void ButtonGameOverShow()
+    {
+        this.AllHide();
+        this._menus.Show<GameOver>();
+    }
+
     private void AllHide()
     {
         foreach (var baseMenu in this._menus)
@@ -91,4 +99,6 @@ public class UiManager : MonoBehaviour
     }
 
     #endregion
+
+    
 }

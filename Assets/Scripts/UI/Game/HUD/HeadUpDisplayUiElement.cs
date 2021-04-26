@@ -37,8 +37,6 @@ public class HeadUpDisplayUiElement : BaseUiElement
         }
 
         // TODO Only Test
-        
-        this.tmpInfectedTime.text = $"{DateTime.Now:hh:mm:ss}";
 
         var space = Input.GetKey(KeyCode.Space);
         var leftControl = Input.GetKey(KeyCode.LeftControl);

@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 372d2870cb138754ea1887dabf5c340f
   - enabled: 1
+    path: Assets/Scenes/Scene1.unity
+    guid: 742c59973647ef1e0a7eebb7b30a48a9
+  - enabled: 1
+    path: Assets/Scenes/Scene2.unity
+    guid: 9e6dcd9b96d2d4d1c8d67ee89e8c83e4
+  - enabled: 1
     path: Assets/Scenes/Scene3.unity
     guid: b24860a8f04c65fe5aa8533a5beae731
   - enabled: 1
@@ -19,7 +25,7 @@ EditorBuildSettings:
     guid: 2c3d82e0dc0ec34089b93b6b7f87aae3
   - enabled: 1
     path: Assets/Scenes/DeathScene.unity
-    guid: e3f0e8c1eab49101a82402e17ef59a2c
+    guid: 0239c0c6df19baef4bba1d9f72e1dbae
   - enabled: 0
     path: Assets/Scenes/JanWorkspace.unity
     guid: 5d05ef68f6fe03b49b738a44c84734a2

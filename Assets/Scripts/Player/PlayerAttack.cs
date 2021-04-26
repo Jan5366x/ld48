@@ -30,6 +30,7 @@ public class PlayerAttack : MonoBehaviour
                     {
                         enemy.entity.TakeDamage(collider.transform, 10f);
                         attackTimer = attackCooldown;
+                        transform.Find("PlayerBody/Weapon").GetComponent<Animator>().SetTrigger("Trigger");
                     }
                 }
             }

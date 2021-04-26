@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using UI.Base;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
+    private const string _gameScene = "Codexzier_Workspace_Test";
+
     public Camera cam;
 
     public MainUiElement mainUiElement;
@@ -25,10 +28,13 @@ public class UiManager : MonoBehaviour
         this._menus.Add(this.hud);
         this._menus.Add(this.gameOver);
         this.ButtonMainMenuShow();
+
+        this.ScaleAllElements();
     }
 
     private void Update()
     {
+        // TODO teuere Methode, kann am ende entfernt werden.
         this.ScaleAllElements();
     }
 
@@ -54,6 +60,20 @@ public class UiManager : MonoBehaviour
         this.AllHide();
         this._menus.Show<MainUiElement>();
         this._menus.Show<ControlAndSoundUiElement>();
+
+        if (!GameState.GameIsRun)
+        {
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                var r = SceneManager.GetSceneAt(i);
+                Debug.Log($"Scene: {r.name}");
+
+                if (r.name.Equals(_gameScene))
+                {
+                    SceneManager.UnloadSceneAsync(_gameScene);
+                }
+            }
+        }
     }
 
     public void ButtonPlay()
@@ -62,6 +82,8 @@ public class UiManager : MonoBehaviour
         this._menus.Show<HeadUpDisplayUiElement>();
 
         // TODO Start game
+
+        SceneManager.LoadScene(_gameScene, LoadSceneMode.Additive);
     }
 
     public void ButtonContinuos()
@@ -77,7 +99,7 @@ public class UiManager : MonoBehaviour
         this.AllHide();
         this._menus.Show<ScoreResultUiElement>();
     }
-    
+
     public void ButtonGameOverShow()
     {
         this.AllHide();
@@ -94,11 +116,11 @@ public class UiManager : MonoBehaviour
 
     public void ButtonExit()
     {
+        SceneManager.UnloadSceneAsync(_gameScene);
+
         Debug.Log("Close the game");
         Application.Quit();
     }
 
     #endregion
-
-    
 }

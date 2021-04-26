@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using UI.Base;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,15 +22,23 @@ public class UiManager : MonoBehaviour
 
     private readonly List<BaseUiElement> _menus = new List<BaseUiElement>();
 
+    private void AddMenuEntry(BaseUiElement entry)
+    {
+        if (entry)
+        {
+            this._menus.Add(entry);
+        }
+    }
+
     public void Start()
     {
-        this._menus.Add(this.mainUiElement);
-        this._menus.Add(this.controlAndSound);
-        this._menus.Add(this.breakUiElement);
-        this._menus.Add(this.scoreResult);
-        this._menus.Add(this.hud);
-        this._menus.Add(this.gameOver);
-        this.ButtonMainMenuShow();
+        AddMenuEntry(mainUiElement);
+        AddMenuEntry(controlAndSound);
+        AddMenuEntry(breakUiElement);
+        AddMenuEntry(scoreResult);
+        AddMenuEntry(hud);
+        AddMenuEntry(gameOver);
+        ButtonMainMenuShow();
 
         this.ScaleAllElements();
     }
@@ -60,20 +71,6 @@ public class UiManager : MonoBehaviour
         this.AllHide();
         this._menus.Show<MainUiElement>();
         this._menus.Show<ControlAndSoundUiElement>();
-
-        if (!GameState.GameIsRun)
-        {
-            for (int i = 0; i < SceneManager.sceneCount; i++)
-            {
-                var r = SceneManager.GetSceneAt(i);
-                Debug.Log($"Scene: {r.name}");
-
-                if (r.name.Equals(_gameScene))
-                {
-                    SceneManager.UnloadSceneAsync(_gameScene);
-                }
-            }
-        }
     }
 
     public void ButtonPlay()
@@ -81,9 +78,8 @@ public class UiManager : MonoBehaviour
         this.AllHide();
         this._menus.Show<HeadUpDisplayUiElement>();
 
-        // TODO Start game
-
-        SceneManager.LoadScene(_gameScene, LoadSceneMode.Additive);
+        Player.ResetPlayerData();
+        SceneManager.LoadScene("MainGame");
     }
 
     public void ButtonContinuos()
@@ -116,10 +112,12 @@ public class UiManager : MonoBehaviour
 
     public void ButtonExit()
     {
-        SceneManager.UnloadSceneAsync(_gameScene);
-
         Debug.Log("Close the game");
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
         Application.Quit();
+#endif
     }
 
     #endregion

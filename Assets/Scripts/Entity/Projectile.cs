@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -20,7 +18,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.Equals(target))
+        if (!other.isTrigger && other.gameObject.Equals(target))
         {
             target.GetComponent<Enemy>().entity.TakeDamage(target.transform, damage);
             Destroy(gameObject);

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class WorldTile : MonoBehaviour
 {
+
     [Range(0, WorldController.MAX_POLLUTION)]
     public int Pollution;
 
@@ -14,10 +15,12 @@ public class WorldTile : MonoBehaviour
     private GameObject _infectionObject;
 
     private SpriteRenderer _tileSpriteRenderer;
+    private PollutableObject[] _pollutableObjects;
 
     private void Start()
     {
         _tileSpriteRenderer = GetComponent<SpriteRenderer>();
+        _pollutableObjects = GetComponentsInChildren<PollutableObject>();
     }
 
     public void SetPollution(int pollution)
@@ -29,7 +32,8 @@ public class WorldTile : MonoBehaviour
     private void Update()
     {
         if (!AllowPollution || _lastPollution == Pollution) return;
-
+        
+        UpdatePollutableObjects();
         SpawnOrDespawnInfection();
         DisableTileSpriteRenderIfPossible();
 
@@ -39,6 +43,14 @@ public class WorldTile : MonoBehaviour
             var color = spriteRenderer.color;
             color.a = (float) Pollution / WorldController.MAX_POLLUTION;
             spriteRenderer.color = color;
+        }
+    }
+
+    private void UpdatePollutableObjects()
+    {
+        foreach (var pollutableObject in _pollutableObjects)
+        {
+            pollutableObject.SetPolluted(Pollution > 10);
         }
     }
 
@@ -87,7 +99,11 @@ public class WorldTile : MonoBehaviour
     // clears not building objects which are covering the world tile (like trees / small stones)
     public void ClearCoveringObjects()
     {
-        // TODO implement
+        foreach (var pollutableObject in _pollutableObjects)
+        {
+            pollutableObject.DestroyObject();
+        }
+        _pollutableObjects = new PollutableObject[0];
     }
     
 #if UNITY_EDITOR

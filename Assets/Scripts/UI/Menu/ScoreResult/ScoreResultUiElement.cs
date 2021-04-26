@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UI.Base;
 using UnityEngine;
@@ -16,6 +17,15 @@ public class ScoreResultUiElement : BaseUiElement
         var result = this.inputPlayername.text;
         
         Debug.Log($"Playername: {result}, result value: {this.resultText.text}");
+
+        var data = new PlayerHighScoreItem
+        {
+            PlayerName = this.inputPlayername.text,
+            ScoreResult = this.resultText.text,
+            Record = DateTime.Now
+        };
+        
+        SaveManager.AddResult(data);
     }
     
     #region ueberschriebene methode aus BaseUiElement

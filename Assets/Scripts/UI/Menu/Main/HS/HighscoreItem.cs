@@ -7,7 +7,7 @@ public class HighscoreItem : MonoBehaviour
     public GameObject Score;
 
 
-    public void SetValues(string playerName, long score)
+    public void SetValues(string playerName, string score)
     {
         var pn = this.Playername.gameObject.GetComponent<TMP_Text>();
         if (pn == null)

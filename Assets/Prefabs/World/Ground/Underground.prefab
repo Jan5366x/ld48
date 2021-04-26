@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3763024630661996432, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
+      propertyPath: AllowPollution
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5026571135597367590, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
       propertyPath: m_Name
       value: Underground

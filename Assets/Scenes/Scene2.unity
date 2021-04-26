@@ -20287,6 +20287,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2093933546485167560, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
+      propertyPath: Pollution
+      value: 3799
+      objectReference: {fileID: 0}
     - target: {fileID: 7851498534470794110, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
       propertyPath: m_Name
       value: G-63-47
@@ -45955,6 +45959,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2093933546485167560, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
+      propertyPath: Pollution
+      value: 1692
+      objectReference: {fileID: 0}
     - target: {fileID: 7851498534470794110, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
       propertyPath: m_Name
       value: G-60-27
@@ -56928,6 +56936,10 @@ PrefabInstance:
     - target: {fileID: 1770536970512889816, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093933546485167560, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
+      propertyPath: Pollution
+      value: 4367
       objectReference: {fileID: 0}
     - target: {fileID: 7851498534470794110, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
       propertyPath: m_Name
@@ -69020,6 +69032,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2093933546485167560, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
+      propertyPath: Pollution
+      value: 4177
+      objectReference: {fileID: 0}
     - target: {fileID: 7851498534470794110, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
       propertyPath: m_Name
       value: G-60-49
@@ -78514,6 +78530,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2093933546485167560, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
+      propertyPath: Pollution
+      value: 2059
+      objectReference: {fileID: 0}
     - target: {fileID: 7851498534470794110, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
       propertyPath: m_Name
       value: G-44-13
@@ -81551,6 +81571,10 @@ PrefabInstance:
     - target: {fileID: 1770536970512889816, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093933546485167560, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
+      propertyPath: Pollution
+      value: 5574
       objectReference: {fileID: 0}
     - target: {fileID: 7851498534470794110, guid: dc7c90de6a99fc7468597867675693e0, type: 3}
       propertyPath: m_Name

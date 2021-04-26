@@ -1,7 +1,7 @@
 using UI.Base;
 using UnityEngine;
 
-public class MainMenu : BaseMenu
+public class MainUiElement : BaseUiElement
 {
     #region windows
 
@@ -45,13 +45,7 @@ public class MainMenu : BaseMenu
 
     #endregion
 
-    public override void ScaleElements(float aspect)
-    {
-        this.menuButtons.ScaleByAspect(aspect);
-        this.highscore.ScaleByAspect(aspect);
-        this.credits.ScaleByAspect(aspect);
-        this.returnToGame.ScaleByAspect(aspect);
-    }
+    
     
     public void ButtonBackToMainMenu()
     {
@@ -62,6 +56,18 @@ public class MainMenu : BaseMenu
         this.returnToGame.SetActive(GameState.GameIsRun);
     }
 
+    #region ueberschriebene methode aus BaseUiElement
+
+    /// <inheritdoc cref="BaseUiElement"/>
+    public override void ScaleElements(float aspect)
+    {
+        this.menuButtons.ScaleByAspect(aspect);
+        this.highscore.ScaleByAspect(aspect);
+        this.credits.ScaleByAspect(aspect);
+        this.returnToGame.ScaleByAspect(aspect);
+    }
+
+    /// <inheritdoc cref="BaseUiElement"/>
     public override void Show()
     {
         this.gameObject.SetActive(true);
@@ -71,8 +77,11 @@ public class MainMenu : BaseMenu
         this.returnToGame.SetActive(GameState.GameIsRun);
     }
 
+    /// <inheritdoc cref="BaseUiElement"/>
     public override void Hide()
     {
         this.gameObject.SetActive(false);
     }
+
+    #endregion
 }

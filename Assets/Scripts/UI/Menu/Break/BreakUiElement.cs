@@ -1,10 +1,8 @@
 using UI.Base;
 using UnityEngine;
 
-public class BreakMenu : BaseMenu
+public class BreakUiElement : BaseUiElement
 {
-    public GameObject GameHUD;
-
     public GameObject Banner;
     public GameObject MenuButtons;
 
@@ -19,12 +17,16 @@ public class BreakMenu : BaseMenu
         this.ControlAndSound.SetActive(true);
     }
 
+    #region ueberschriebene methode aus BaseUiElement
+    
+    /// <inheritdoc cref="BaseUiElement"/>
     public override void ScaleElements(float aspect)
     {
         this.Banner.ScaleByAspect(aspect);
         this.MenuButtons.ScaleByAspect(aspect);
     }
 
+    /// <inheritdoc cref="BaseUiElement"/>
     public override void Show()
     {
         this.gameObject.SetActive(true);
@@ -33,8 +35,11 @@ public class BreakMenu : BaseMenu
         GameState.GameIsRun = true;
     }
 
+    /// <inheritdoc cref="BaseUiElement"/>
     public override void Hide()
     {
         this.gameObject.SetActive(false);
     }
+    
+    #endregion
 }

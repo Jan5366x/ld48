@@ -20,10 +20,10 @@ public class WorldController : MonoBehaviour
     public float spawnerPlaceDuration = 30;
     public float spawnerPlaceTime = 30;
 
-    public float infectionSpreadDuration = 2;
+    public float infectionSpreadDuration = 0.2f;
     public float infectionSpreadTime = 0;
 
-    public float coinSpreadDuration = 2;
+    public float coinSpreadDuration = 5;
     public float coinSpreadTime = 0;
 
     public GameObject spawnerPrefab;
@@ -108,12 +108,13 @@ public class WorldController : MonoBehaviour
 
                     if (xx < 0 || yy < 0 || xx >= WORLD_SIZE || yy >= WORLD_SIZE) continue;
 
-                    float infectionProbability = 1f / (Math.Abs(i) + Math.Abs(j));
+                    var distance = Math.Abs(i) + Math.Abs(j);
+                    float infectionProbability = 1f / distance;
 
                     if (_random.NextFloat() < infectionProbability)
                     {
-                        pollution[xx, yy] = Math.Min(MAX_POLLUTION,
-                            pollution[xx, yy] + (20 - Math.Abs(i) - Math.Abs(j)));
+                        int strength = (int) Mathf.Lerp(3, 1, distance / 20f);
+                        pollution[xx, yy] = Math.Min(MAX_POLLUTION, pollution[xx, yy] + strength);
                     }
                 }
             }
@@ -139,7 +140,7 @@ public class WorldController : MonoBehaviour
                     }
                     else
                     {
-                        pollution[xx, yy] = Math.Max(0, pollution[xx, yy] - 20);
+                        pollution[xx, yy] = Math.Max(0, pollution[xx, yy] - 2);
                     }
                 }
             }
@@ -199,7 +200,7 @@ public class WorldController : MonoBehaviour
 
     private static bool IsTileBlocked(int x, int y)
     {
-        if (x < 0 || y < 0 || x > WORLD_SIZE || y > WORLD_SIZE)
+        if (x < 0 || y < 0 || x >= WORLD_SIZE || y >= WORLD_SIZE)
         {
             return true;
         }
@@ -266,9 +267,8 @@ public class WorldController : MonoBehaviour
             coinSpreadTime = coinSpreadDuration;
         }
 
-        // TODO FIXME 
-        //GameOverHandler.victoryCondition = CheckVictoryCondition();
-        //Debug.Log(GameOverHandler.victoryCondition);
+        GameOverHandler.victoryCondition = CheckVictoryCondition();
+        Debug.Log(GameOverHandler.victoryCondition);
     }
 
     private bool CheckVictoryCondition()

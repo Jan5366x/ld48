@@ -13,7 +13,7 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         attackTimer -= Time.deltaTime;
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Attack"))
         {
             if (attackTimer < 0)
             {
@@ -29,19 +29,20 @@ public class PlayerAttack : MonoBehaviour
                     if (enemy)
                     {
                         enemy.entity.TakeDamage(collider.transform, 10f);
-                        attackTimer = attackCooldown;
-                        transform.Find("PlayerBody/Weapon").GetComponent<Animator>().SetTrigger("Trigger");
                     }
                 }
+
+                attackTimer = attackCooldown;
+                transform.Find("PlayerBody/Weapon").GetComponent<Animator>().SetTrigger("Trigger");
             }
         }
 
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("PlaceHealer"))
         {
             PlaceHealer();
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("PlaceDefenseTower"))
         {
             PlaceDefenseTower();
         }

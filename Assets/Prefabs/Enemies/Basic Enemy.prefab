@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity:
-    health: 100
-    maxHealth: 100
+    health: 20
+    maxHealth: 20
     onDeathPrefab: {fileID: 0}
     onDamagePrefab: {fileID: 0}
     splatterArea:
@@ -122,7 +122,7 @@ MonoBehaviour:
   senseRange: 5
   aggressionRange: 3
   attackRange: 1
-  damage: 10
+  damage: 4
   speedNormal: 1
   speedAggressive: 3
   aggressionCooldown: 2

@@ -78,10 +78,10 @@ public class WorldController : MonoBehaviour
                 if (ground)
                 {
                     WorldTile tile = ground.GetComponent<WorldTile>();
-                    buildable[x, y] = tile;
                     if (tile)
                     {
                         tiles[x, y] = tile;
+                        buildable[x, y] = tile.AllowPollution;
                         pollutable[x, y] = tile.AllowPollution;
                         pollution[x, y] = tile.Pollution;
                     }
@@ -327,6 +327,7 @@ public class WorldController : MonoBehaviour
 
             infectionSpreadTime = infectionSpreadDuration;
             infectionStatus = pollutedTiles / (float) pollutableTiles;
+            GameOverHandler.victoryCondition = CheckVictoryCondition();
         }
 
         if (spawnerPlaceTime < 0)
@@ -340,9 +341,6 @@ public class WorldController : MonoBehaviour
             SpreadCoin();
             coinSpreadTime = coinSpreadDuration;
         }
-
-        GameOverHandler.victoryCondition = CheckVictoryCondition();
-        Debug.Log(GameOverHandler.victoryCondition);
     }
 
     private void PassiveHealing()
@@ -358,30 +356,37 @@ public class WorldController : MonoBehaviour
 
     private bool CheckVictoryCondition()
     {
+        foreach (var spawner in spawners)
+        {
+            Debug.Log(spawner);
+            Debug.DrawLine(new Vector3(spawner.Item1, -spawner.Item2, 0),
+                new Vector3(spawner.Item1 + 1, -spawner.Item2 - 1, 0), Color.magenta, 1f);
+        }
+
+        bool result = true;
+
         for (int x = 0; x < WORLD_SIZE; x++)
         {
             for (int y = 0; y < WORLD_SIZE; y++)
             {
+                if (buildable[x, y])
+                {
+                    Debug.DrawLine(new Vector3(x, -y, 0), new Vector3(x + 1, -y, 0), Color.blue, 1f);
+                }
+
                 if (pollutable[x, y])
                 {
+                    Debug.DrawLine(new Vector3(x, -y, 0), new Vector3(x, -y - 1, 0), Color.green, 1f);
                     if (pollution[x, y] > POLLUTION_DISPLAY_MIN)
                     {
                         Debug.DrawLine(new Vector3(x, -y, 0), new Vector3(x + 1, -y - 1, 0), Color.red, 1f);
-                        return false;
+                        result = false;
                     }
                 }
             }
         }
 
-        foreach (var spawner in spawners)
-        {
-            Debug.Log(spawner);
-            Debug.DrawLine(new Vector3(spawner.Item1, -spawner.Item2, 0),
-                new Vector3(spawner.Item1 + 1, -spawner.Item2 - 1, 0), Color.green, 1f);
-        }
-
-        Debug.DrawLine(new Vector3(0, 0, 0), new Vector3(spawners.Count, -spawners.Count, 0), Color.green, 1f);
-        return spawners.Count == 0;
+        return result && spawners.Count == 0;
     }
 
     private void SpreadCoin()

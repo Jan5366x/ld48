@@ -79,7 +79,7 @@ public class UiManager : MonoBehaviour
         this._menus.Show<HeadUpDisplayUiElement>();
 
         Player.ResetPlayerData();
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("Scene1");
     }
 
     public void ButtonContinuos()

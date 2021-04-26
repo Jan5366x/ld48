@@ -1,9 +1,11 @@
 using UI.Base;
+using UnityEngine;
 
 public class GameOver : BaseMenu
 {
     public void ButtonReturnToMenu()
     {
+        Debug.Log("Script Game over. Set game status to false");
         // kann ggf. weg, wenn der aktive Spiel abgelesen werden kann
         GameState.GameIsRun = false;
     }

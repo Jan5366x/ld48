@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace UI.Base
@@ -28,11 +29,12 @@ namespace UI.Base
             gameObject.transform.localScale = new Vector3(1, 1, 1) * (byPixelHeight * scaleWidth);
         }
 
-        public static void Show<TMenu>(this List<BaseMenu> menus) where TMenu : BaseMenu
+        public static void Show<TMenu>(this IEnumerable<BaseMenu> menus) where TMenu : BaseMenu
         {
             GetMenu<TMenu>(menus).Show();
         }
 
+        [UsedImplicitly]
         public static void Hide<TMenu>(this IEnumerable<BaseMenu> menus) where TMenu : BaseMenu
         {
             GetMenu<TMenu>(menus).Hide();

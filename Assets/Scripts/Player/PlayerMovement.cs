@@ -87,18 +87,5 @@ public class PlayerMovement : MonoBehaviour
                 lastDirectionH = directionH;
             }
         }
-
-        ReAnchorWeapon(idle, idle ? lastDirectionH : directionH, idle ? lastDirectionV : directionV);
-    }
-
-    private void ReAnchorWeapon(bool idle, int directionH, int directionV)
-    {
-        if (weapon)
-        {
-            if (!idle)
-            {
-                weapon.SetParent(transform.Find("Hand_" + directionH + "_" + directionV), false);
-            }
-        }
     }
 }

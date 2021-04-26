@@ -7768,9 +7768,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnerPlaceDuration: 30
   spawnerPlaceTime: 30
-  infectionSpreadDuration: 2
+  infectionSpreadDuration: 0.2
   infectionSpreadTime: 0
-  coinSpreadDuration: 2
+  coinSpreadDuration: 5
   coinSpreadTime: 0
   spawnerPrefab: {fileID: 3052685002229949542, guid: 4a9d59d10ac6bb24d89cabeebdf35ff6, type: 3}
   coinPrefab: {fileID: 5246986285486737531, guid: 723397605d36289dd917158e83a832ac, type: 3}

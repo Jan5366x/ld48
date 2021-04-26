@@ -19,7 +19,20 @@ Collect heart canisters to heal yourself.
 
 # Note
 
-Your score is the amount of time you take to clear all levels. Not always is it advicable to rush into the next level
+Your score is the amount of time you take to clear all levels. Not always is it advicable to rush into the next level.
+
+# Long Description
+
+This game is a remake of an old game jam entry of ours: [Shroom Island](https://ldjam.com/events/ludum-dare/38/shroom-island/).
+Your task is to destroy the mycelium spawners and heal the soil around.
+You can wait and the soil recovers slowly over time, or you can place healing stations to heal speed this progress along.
+Holding an area until the healers had time to work is critical. 
+To assist you in this task you can place defense towers.
+Once all the pollution is gone from an area you can descend to the next deeper level.
+Collect coins to afford more building structures.
+Make sure you gather healing canisters to keep your strength up for the next fight.
+Remember there is no regeneration between levels. 
+Make sure to recuperate before heading on.
 
 # Tools
 

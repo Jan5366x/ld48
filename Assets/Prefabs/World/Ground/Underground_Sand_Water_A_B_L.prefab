@@ -1,43 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!60 &7247964273976568543
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104109300991992070}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 1}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.6659754, y: -0.37300283}
-      - {x: 0.53562874, y: -0.5072063}
-      - {x: 0.427652, y: -0.6425915}
-      - {x: 0.33781976, y: -0.81644833}
-      - {x: 0.302698, y: -0.99804866}
-      - {x: 0.25658897, y: -1.0195122}
-      - {x: 0.19320905, y: -0.7474229}
-      - {x: 0.34368593, y: -0.45646757}
-      - {x: 0.59565055, y: -0.22904319}
-      - {x: 1.0256703, y: -0.2169084}
-      - {x: 1.0016769, y: -0.29710865}
-      - {x: 0.8633081, y: -0.30266735}
---- !u!1001 &4949501119059619872
+--- !u!1001 &7435036611598208285
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -47,7 +10,11 @@ PrefabInstance:
     - target: {fileID: -570746111073476445, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0286bcebfb1b1ce4c866de1153cc40d6, type: 3}
+      objectReference: {fileID: 21300000, guid: 9994ffcb6db5f3a4db95819dcad5ba0a, type: 3}
+    - target: {fileID: -570746111073476445, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3577514517447253376, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -94,12 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5026571135597367590, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
       propertyPath: m_Name
-      value: Grass_Sand_Water_I_T_L
+      value: Underground_Sand_Water_A_B_L
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
---- !u!1 &104109300991992070 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5026571135597367590, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
-  m_PrefabInstance: {fileID: 4949501119059619872}
-  m_PrefabAsset: {fileID: 0}

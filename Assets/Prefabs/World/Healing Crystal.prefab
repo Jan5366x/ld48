@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5090773619412592879}
   - component: {fileID: 5090773619412592864}
   - component: {fileID: 5090773619412592865}
-  - component: {fileID: 8341218062323726716}
+  - component: {fileID: 5020987555074772817}
   m_Layer: 0
   m_Name: Healing Crystal
   m_TagString: Untagged
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 1261733811358607136, guid: e69e6750fe922794db33e2ddef5d1700, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   money: 0
   healing: 10
   onPickupPrefab: {fileID: 0}
---- !u!61 &8341218062323726716
-BoxCollider2D:
+--- !u!58 &5020987555074772817
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -110,19 +110,9 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.5}
-    newSize: {x: 1, y: 0.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: -0.008664072, y: 0.007876433}
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
-  m_EdgeRadius: 0
+  m_Radius: 0.105308905

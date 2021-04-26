@@ -7,22 +7,30 @@ public class PlayerAttack : MonoBehaviour
     public GameObject defenseTowerPrefab;
     public GameObject defenseTowerPlaceFailedPrefab;
 
+    public float attackCooldown = 0.5f;
+    public float attackTimer = 0.5f;
+
     void Update()
     {
+        attackTimer -= Time.deltaTime;
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.DrawLine(transform.position, transform.position + Vector3.up * 2, Color.black, 1f);
-            Debug.DrawLine(transform.position, transform.position + Vector3.down * 2, Color.black, 1f);
-            Debug.DrawLine(transform.position, transform.position + Vector3.left * 2, Color.black, 1f);
-            Debug.DrawLine(transform.position, transform.position + Vector3.right * 2, Color.black, 1f);
-            var overlapCircleAll = Physics2D.OverlapCircleAll(transform.position, 2);
-            foreach (var collider in overlapCircleAll)
+            if (attackTimer < 0)
             {
-                if (collider.isTrigger) continue;
-                Enemy enemy = collider.GetComponent<Enemy>();
-                if (enemy)
+                Debug.DrawLine(transform.position, transform.position + Vector3.up * 2, Color.black, 1f);
+                Debug.DrawLine(transform.position, transform.position + Vector3.down * 2, Color.black, 1f);
+                Debug.DrawLine(transform.position, transform.position + Vector3.left * 2, Color.black, 1f);
+                Debug.DrawLine(transform.position, transform.position + Vector3.right * 2, Color.black, 1f);
+                var overlapCircleAll = Physics2D.OverlapCircleAll(transform.position, 2);
+                foreach (var collider in overlapCircleAll)
                 {
-                    enemy.entity.TakeDamage(collider.transform, 10f);
+                    if (collider.isTrigger) continue;
+                    Enemy enemy = collider.GetComponent<Enemy>();
+                    if (enemy)
+                    {
+                        enemy.entity.TakeDamage(collider.transform, 10f);
+                        attackTimer = attackCooldown;
+                    }
                 }
             }
         }

@@ -1,5 +1,45 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!60 &5015972805152561519
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769206747078776508}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 1}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.8292043, y: -0.31229854}
+      - {x: 0.68062377, y: -0.36180776}
+      - {x: 0.5252573, y: -0.5407821}
+      - {x: 0.37577266, y: -0.7663438}
+      - {x: 0.300147, y: -1}
+      - {x: 0.33477855, y: -1.0321445}
+      - {x: 0.5024351, y: -1.0280921}
+      - {x: 0.53684217, y: -0.9948251}
+      - {x: 0.62079364, y: -0.8202121}
+      - {x: 0.7412619, y: -0.6755524}
+      - {x: 0.8814132, y: -0.5603836}
+      - {x: 1.00576, y: -0.53834546}
+      - {x: 1.0204619, y: -0.49985072}
+      - {x: 1.020383, y: -0.32206318}
+      - {x: 1.0000001, y: -0.29238462}
 --- !u!1001 &5723286393660475290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65,3 +105,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
+--- !u!1 &769206747078776508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5026571135597367590, guid: c46e70edf7340364ea83a6228f33b4ff, type: 3}
+  m_PrefabInstance: {fileID: 5723286393660475290}
+  m_PrefabAsset: {fileID: 0}

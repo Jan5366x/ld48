@@ -3501,8 +3501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1983856988}
   uiManager: {fileID: 1422657931}
-  StaminaMinLine: {fileID: 965543219}
-  StaminaMinimalForAction: 20
+  staminaMinLine: {fileID: 965543219}
   screenElementsTop: {fileID: 214986735}
   screenElementsBottom: {fileID: 2034731227}
   sliderHealth: {fileID: 2130788091}
@@ -5604,7 +5603,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.478
+  m_Value: 0.422
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

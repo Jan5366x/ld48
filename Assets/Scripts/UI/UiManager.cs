@@ -38,7 +38,7 @@ public class UiManager : MonoBehaviour
         AddMenuEntry(scoreResult);
         AddMenuEntry(hud);
         AddMenuEntry(gameOver);
-        ButtonMainMenuShow();
+        //ButtonMainMenuShow();
 
         this.ScaleAllElements();
     }

@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Codexzier_Workspace_Test.unity
     guid: 0f340c2d2519a274194705f3060d822d
+  - enabled: 1
+    path: Assets/Scenes/MainGame.unity
+    guid: 1b6260c23cdfb6651ab178dfa3fb45d5
+  - enabled: 1
+    path: Assets/Scenes/MainGame2.unity
+    guid: f316205328549ec28bfbe9dd35abf300
   m_configObjects: {}

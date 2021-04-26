@@ -8,7 +8,9 @@ public class WorldController : MonoBehaviour
 {
     private static Random _random;
     public const int POLLUTION_DISPLAY_MIN = 30;
-    public const int POLLUTION_HEALER_MAX = 5000;
+    public const int SPAWNER_POLLUTION_MIN = 500;
+    public const int POLLUTION_HEALER_MAX = 1500;
+    public const int POLLUTION_TOWER_MAX = 5000;
     public const int WORLD_SIZE = 100;
     public const int MAX_POLLUTION = 10000;
     private static WorldTile[,] tiles;
@@ -162,7 +164,7 @@ public class WorldController : MonoBehaviour
         {
             for (int y = 0; y < WORLD_SIZE; y++)
             {
-                if (pollution[x, y] > POLLUTION_DISPLAY_MIN && !IsTileBlocked(x, y))
+                if (pollution[x, y] > SPAWNER_POLLUTION_MIN && !IsTileBlocked(x, y))
                 {
                     spawnableSpaces.Add(Tuple.Create(x, y));
                 }
@@ -203,6 +205,16 @@ public class WorldController : MonoBehaviour
         }
 
         healers.Add(Tuple.Create<int, int>(x, y));
+        return true;
+    }
+
+    public static bool PlaceDefenseTower(int x, int y)
+    {
+        if (IsTileBlocked(x, y) || pollution[x, y] > POLLUTION_TOWER_MAX)
+        {
+            return false;
+        }
+
         return true;
     }
 
@@ -249,7 +261,6 @@ public class WorldController : MonoBehaviour
         }
 
 
-
         if (infectionSpreadTime < 0)
         {
             long pollutableTiles = 0;
@@ -262,15 +273,16 @@ public class WorldController : MonoBehaviour
             {
                 for (int y = 0; y < WORLD_SIZE; y++)
                 {
-
                     if (pollutable[x, y])
                     {
                         pollutableTiles++;
                     }
-                    if(pollution[x, y] > POLLUTION_DISPLAY_MIN)
+
+                    if (pollution[x, y] > POLLUTION_DISPLAY_MIN)
                     {
                         pollutedTiles++;
                     }
+
                     WorldTile tile = tiles[x, y];
                     if (tile)
                     {
@@ -280,7 +292,7 @@ public class WorldController : MonoBehaviour
             }
 
             infectionSpreadTime = infectionSpreadDuration;
-            infectionStatus = pollutedTiles / (float)pollutableTiles;
+            infectionStatus = pollutedTiles / (float) pollutableTiles;
         }
 
         if (spawnerPlaceTime < 0)

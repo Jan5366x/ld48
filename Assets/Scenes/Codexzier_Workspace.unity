@@ -5594,8 +5594,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1983856988}
-  mainMenu: {fileID: 1799049899}
-  breakMenu: {fileID: 1911433241}
+  mainUiElement: {fileID: 1799049899}
+  breakUiElement: {fileID: 1911433241}
   controlAndSound: {fileID: 1108534079}
   scoreResult: {fileID: 817006772}
   hud: {fileID: 821913171}
@@ -7930,7 +7930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ee6f091b173d840906d6e17a23acf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameHUD: {fileID: 821913169}
   Banner: {fileID: 980354973}
   MenuButtons: {fileID: 16437719}
   ControlAndSound: {fileID: 1108534077}

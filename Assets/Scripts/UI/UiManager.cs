@@ -8,11 +8,11 @@ public class UiManager : MonoBehaviour
 
     public MainUiElement mainUiElement;
     public BreakUiElement breakUiElement;
-    public ControlAndSound controlAndSound;
-    public ScoreResult scoreResult;
+    public ControlAndSoundUiElement controlAndSound;
+    public ScoreResultUiElement scoreResult;
 
-    public HeadUpDisplay hud;
-    public GameOver gameOver;
+    public HeadUpDisplayUiElement hud;
+    public GameOverUiElement gameOver;
 
     private readonly List<BaseUiElement> _menus = new List<BaseUiElement>();
 
@@ -53,13 +53,13 @@ public class UiManager : MonoBehaviour
     {
         this.AllHide();
         this._menus.Show<MainUiElement>();
-        this._menus.Show<ControlAndSound>();
+        this._menus.Show<ControlAndSoundUiElement>();
     }
 
     public void ButtonPlay()
     {
         this.AllHide();
-        this._menus.Show<HeadUpDisplay>();
+        this._menus.Show<HeadUpDisplayUiElement>();
 
         // TODO Start game
     }
@@ -67,7 +67,7 @@ public class UiManager : MonoBehaviour
     public void ButtonContinuos()
     {
         this.AllHide();
-        this._menus.Show<HeadUpDisplay>();
+        this._menus.Show<HeadUpDisplayUiElement>();
 
         // TODO resum game
     }
@@ -75,13 +75,13 @@ public class UiManager : MonoBehaviour
     public void ButtonScoreResult()
     {
         this.AllHide();
-        this._menus.Show<ScoreResult>();
+        this._menus.Show<ScoreResultUiElement>();
     }
     
     public void ButtonGameOverShow()
     {
         this.AllHide();
-        this._menus.Show<GameOver>();
+        this._menus.Show<GameOverUiElement>();
     }
 
     private void AllHide()

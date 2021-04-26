@@ -4,7 +4,7 @@ using UI.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HeadUpDisplay : BaseUiElement
+public class HeadUpDisplayUiElement : BaseUiElement
 {
     public Camera cam;
     public UiManager uiManager;

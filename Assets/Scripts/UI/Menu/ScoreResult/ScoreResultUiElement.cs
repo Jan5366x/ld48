@@ -2,7 +2,7 @@ using TMPro;
 using UI.Base;
 using UnityEngine;
 
-public class ScoreResult : BaseUiElement
+public class ScoreResultUiElement : BaseUiElement
 {
     public GameObject banner;
     public GameObject scoreContent;

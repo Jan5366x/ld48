@@ -1,21 +1,18 @@
 using UI.Base;
 using UnityEngine;
 
-public class GameOver : BaseUiElement
+public class ControlAndSoundUiElement : BaseUiElement
 {
-    public void ButtonReturnToMenu()
-    {
-        Debug.Log("Script Game over. Set game status to false");
-        // kann ggf. weg, wenn der aktive Spiel abgelesen werden kann
-        GameState.GameIsRun = false;
-    }
-    
-    #region ueberschriebene methode aus BaseUiElement
+    public GameObject soundOption;
+    public GameObject controlDescriptions;
 
+    #region ueberschriebene methode aus BaseUiElement
+    
     /// <inheritdoc cref="BaseUiElement"/>
     public override void ScaleElements(float aspect)
     {
-        this.gameObject.ScaleByAspect(aspect);
+        this.soundOption.ScaleByAspect(aspect);
+        this.controlDescriptions.ScaleByAspect(aspect);
     }
 
     /// <inheritdoc cref="BaseUiElement"/>

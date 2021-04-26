@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEngine;
 
 public class Highscore : MonoBehaviour
@@ -31,4 +33,52 @@ public class Highscore : MonoBehaviour
         var hsi = gameObject.GetComponent<HighscoreItem>();
         hsi.SetValues(item.Item1, item.Item2);
     }
+}
+
+
+public class SaveManager
+{
+    public static SaveManager current = new SaveManager();
+    
+    public void AddResult(PlayerHighScoreItem item)
+    {
+        SaveHighScoreData data = current.Load();
+        var dt = DateTime.Now;
+
+        var shsds = data.Results.OrderBy(o => o.Record).ToList();
+        var removeOldest = shsds.Last();
+        shsds.Remove(removeOldest);
+
+        item.Record = DateTime.Now;
+        shsds.Add(item);
+
+        data.Results = shsds.ToArray();
+    }
+
+    private SaveHighScoreData Load()
+    {
+        throw new NotImplementedException();
+    }
+}
+
+[Serializable]
+public class SaveHighScoreData
+{
+    public DateTime LastUpdate;
+    public PlayerHighScoreItem[] Results;
+
+    public SaveHighScoreData()
+    {
+        
+    }
+}
+
+[Serializable]
+public class PlayerHighScoreItem
+{
+    public string PlayerName { get; set; }
+
+    public string ScoreResult { get; set; }
+
+    public DateTime Record { get; set; }
 }

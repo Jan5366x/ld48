@@ -2,7 +2,7 @@ using TMPro;
 using UI.Base;
 using UnityEngine;
 
-public class ScoreResult : BaseMenu
+public class ScoreResult : BaseUiElement
 {
     public GameObject banner;
     public GameObject scoreContent;
@@ -18,13 +18,16 @@ public class ScoreResult : BaseMenu
         Debug.Log($"Playername: {result}, result value: {this.resultText.text}");
     }
     
+    #region ueberschriebene methode aus BaseUiElement
     
+    /// <inheritdoc cref="BaseUiElement"/>
     public override void ScaleElements(float aspect)
     {
         this.banner.ScaleByAspect(aspect);
         this.scoreContent.ScaleByAspect(aspect);
     }
 
+    /// <inheritdoc cref="BaseUiElement"/>
     public override void Show()
     {
         this.gameObject.SetActive(true);
@@ -32,8 +35,11 @@ public class ScoreResult : BaseMenu
         GameState.GameIsRun = false;
     }
 
+    /// <inheritdoc cref="BaseUiElement"/>
     public override void Hide()
     {
         this.gameObject.SetActive(false);
     }
+    
+    #endregion
 }

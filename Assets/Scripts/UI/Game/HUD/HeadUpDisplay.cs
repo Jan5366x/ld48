@@ -4,7 +4,7 @@ using UI.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HeadUpDisplay : BaseMenu
+public class HeadUpDisplay : BaseUiElement
 {
     public Camera cam;
     public UiManager uiManager;
@@ -26,6 +26,7 @@ public class HeadUpDisplay : BaseMenu
         }
 
         // TODO Only Test
+        
         this.tmpInfectedTime.text = $"{DateTime.Now:hh:mm:ss}";
 
         var space = Input.GetKey(KeyCode.Space);
@@ -43,8 +44,6 @@ public class HeadUpDisplay : BaseMenu
         }
     }
     
-    
-
     private void SetStateValues(float health, float stamina, float infectionState)
     {
         SetValueIfBetweenMinMax(this.sliderHealth, health);
@@ -59,22 +58,29 @@ public class HeadUpDisplay : BaseMenu
             }
         }
     }
+    
+    #region ueberschriebene methode aus BaseUiElement
 
+    /// <inheritdoc cref="BaseUiElement"/>
     public override void ScaleElements(float aspect)
     {
         this.screenElementsTop.ScaleByAspectAndPixelHeightAndMinWidth(this.cam, 1000);
         this.screenElementsBottom.ScaleByAspectAndPixelHeightAndMinWidth(this.cam, 1000);
     }
 
+    /// <inheritdoc cref="BaseUiElement"/>
     public override void Show()
     {
         this.gameObject.SetActive(true);
     }
 
+    /// <inheritdoc cref="BaseUiElement"/>
     public override void Hide()
     {
         this.gameObject.SetActive(false);
     }
+    
+    #endregion
 
     #region Game content
 

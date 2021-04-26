@@ -6,21 +6,21 @@ public class UiManager : MonoBehaviour
 {
     public Camera cam;
 
-    public MainMenu mainMenu;
-    public BreakMenu breakMenu;
+    public MainUiElement mainUiElement;
+    public BreakUiElement breakUiElement;
     public ControlAndSound controlAndSound;
     public ScoreResult scoreResult;
 
     public HeadUpDisplay hud;
     public GameOver gameOver;
 
-    private readonly List<BaseMenu> _menus = new List<BaseMenu>();
+    private readonly List<BaseUiElement> _menus = new List<BaseUiElement>();
 
     public void Start()
     {
-        this._menus.Add(this.mainMenu);
+        this._menus.Add(this.mainUiElement);
         this._menus.Add(this.controlAndSound);
-        this._menus.Add(this.breakMenu);
+        this._menus.Add(this.breakUiElement);
         this._menus.Add(this.scoreResult);
         this._menus.Add(this.hud);
         this._menus.Add(this.gameOver);
@@ -46,13 +46,13 @@ public class UiManager : MonoBehaviour
     public void ButtonBreakMenuShow()
     {
         this.AllHide();
-        this._menus.Show<BreakMenu>();
+        this._menus.Show<BreakUiElement>();
     }
 
     public void ButtonMainMenuShow()
     {
         this.AllHide();
-        this._menus.Show<MainMenu>();
+        this._menus.Show<MainUiElement>();
         this._menus.Show<ControlAndSound>();
     }
 

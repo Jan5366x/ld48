@@ -56,7 +56,7 @@ public class WorldTile : MonoBehaviour
     {
         foreach (var pollutableObject in _pollutableObjects)
         {
-            pollutableObject.SetPolluted(Pollution > 10);
+            pollutableObject.SetPolluted(Pollution > WorldController.POLLUTION_DISPLAY_MIN);
         }
     }
 

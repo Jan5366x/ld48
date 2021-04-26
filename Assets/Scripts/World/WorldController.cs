@@ -17,6 +17,7 @@ public class WorldController : MonoBehaviour
     private static int[,] pollution;
     private static List<Tuple<int, int>> spawners;
     private static List<Tuple<int, int>> healers;
+    public static float infectionStatus;
 
     public int passiveRemoval = 10;
     public int healerRemoval = 80;
@@ -247,8 +248,12 @@ public class WorldController : MonoBehaviour
             return;
         }
 
+
+
         if (infectionSpreadTime < 0)
         {
+            long pollutableTiles = 0;
+            long pollutedTiles = 0;
             SpreadInfection();
             SpreadHealing();
             PassiveHealing();
@@ -257,6 +262,15 @@ public class WorldController : MonoBehaviour
             {
                 for (int y = 0; y < WORLD_SIZE; y++)
                 {
+
+                    if (pollutable[x, y])
+                    {
+                        pollutableTiles++;
+                    }
+                    if(pollution[x, y] > POLLUTION_DISPLAY_MIN)
+                    {
+                        pollutedTiles++;
+                    }
                     WorldTile tile = tiles[x, y];
                     if (tile)
                     {
@@ -266,6 +280,7 @@ public class WorldController : MonoBehaviour
             }
 
             infectionSpreadTime = infectionSpreadDuration;
+            infectionStatus = pollutedTiles / (float)pollutableTiles;
         }
 
         if (spawnerPlaceTime < 0)

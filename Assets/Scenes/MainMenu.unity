@@ -279,6 +279,48 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1519334978775734571, guid: 0809781f7f3c7dfa39f69fae1328de79, type: 3}
+      propertyPath: m_text
+      value: 'Kormarun
+
+        - Coding & Main Level Design
+
+
+        Jan5366x
+
+        -
+        Artwork & Coding
+
+
+        Codexzier
+
+        - Interface & Sound & Level
+        Design'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519334979194166508, guid: 0809781f7f3c7dfa39f69fae1328de79, type: 3}
+      propertyPath: m_text
+      value: 'YOUR MISSION:
+
+
+        Free the land from the mushroom army and its
+        pollution
+
+
+        CONTROLS:
+
+
+        Movement: WASD / Arrow
+
+        SPRINT:
+        Shift / Space
+
+        Attack: Control / Mouse L
+
+        BuildTower (5 C):
+        Q / Mouse M
+
+        Build Healer (5 C): E / Mouse R'
+      objectReference: {fileID: 0}
     - target: {fileID: 1519334979420136074, guid: 0809781f7f3c7dfa39f69fae1328de79, type: 3}
       propertyPath: m_Name
       value: MainMenuCanvas
@@ -365,6 +407,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1519334979420136078, guid: 0809781f7f3c7dfa39f69fae1328de79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519334979558446158, guid: 0809781f7f3c7dfa39f69fae1328de79, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1519334979762872610, guid: 0809781f7f3c7dfa39f69fae1328de79, type: 3}

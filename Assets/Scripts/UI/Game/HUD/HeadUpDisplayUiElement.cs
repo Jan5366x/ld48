@@ -27,7 +27,7 @@ public class HeadUpDisplayUiElement : BaseUiElement
     private void Update()
     {
         var xs = (RectTransform)this.sliderStamina.transform;
-        var y = xs.rect.width / Player.maxStamina;
+        var y = Player.maxStamina / xs.rect.width ;
         
         var x = this.StaminaMinimalForAction / Player.maxStamina * y;
         this.StaminaMinLine.transform.position = new Vector3(x, 0, 0);

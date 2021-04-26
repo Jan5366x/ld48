@@ -19,6 +19,7 @@ public class WorldController : MonoBehaviour
     private static int[,] pollution;
     private static List<Tuple<int, int>> spawners;
     private static List<Tuple<int, int>> healers;
+    private static List<Tuple<int, int>> towers;
     public static float infectionStatus;
 
     public int passiveRemoval = 10;
@@ -179,6 +180,8 @@ public class WorldController : MonoBehaviour
 
         Tuple<int, int> space = spawnableSpaces[_random.NextInt(spawnableSpaces.Count)];
         spawners.Add(space);
+        ClearCoveringObjects(space.Item1, space.Item2);
+
         WorldTile tile = tiles[space.Item1, space.Item2];
         Instantiate(spawnerPrefab, tile.transform);
     }
@@ -204,8 +207,23 @@ public class WorldController : MonoBehaviour
             return false;
         }
 
+        ClearCoveringObjects(x, y);
         healers.Add(Tuple.Create<int, int>(x, y));
         return true;
+    }
+
+    public static bool DeleteHealer(int x, int y)
+    {
+        for (var i = healers.Count - 1; i >= 0; i--)
+        {
+            if (healers[i].Item1 == x && healers[i].Item2 == y)
+            {
+                healers.RemoveAt(i);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static bool PlaceDefenseTower(int x, int y)
@@ -215,7 +233,23 @@ public class WorldController : MonoBehaviour
             return false;
         }
 
+        ClearCoveringObjects(x, y);
+        towers.Add(Tuple.Create(x, y));
         return true;
+    }
+
+    public static bool DeleteDefenseTower(int x, int y)
+    {
+        for (var i = towers.Count - 1; i >= 0; i--)
+        {
+            if (towers[i].Item1 == x && towers[i].Item2 == y)
+            {
+                towers.RemoveAt(i);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static bool IsTileBlocked(int x, int y)
@@ -371,6 +405,15 @@ public class WorldController : MonoBehaviour
                     Quaternion.identity);
                 return;
             }
+        }
+    }
+
+    private static void ClearCoveringObjects(int x, int y)
+    {
+        WorldTile tile = tiles[x, y];
+        if (tile)
+        {
+            tile.ClearCoveringObjects();
         }
     }
 

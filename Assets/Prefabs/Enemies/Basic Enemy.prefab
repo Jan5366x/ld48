@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -2614437293559027876, guid: e2df125908c151c408e4ed644545afd9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,6 +112,12 @@ MonoBehaviour:
       width: 0
       height: 0
     wasDead: 0
+    destroyParent: 0
+  player: {fileID: 0}
+  homePosition: {x: 0, y: 0, z: 0}
+  canMove: 1
+  maxHomeDistance: 10
+  minHomeDistance: 1
   senseRange: 5
   aggressionRange: 3
   attackRange: 1
@@ -120,11 +126,19 @@ MonoBehaviour:
   speedAggressive: 3
   aggressionCooldown: 2
   aggressionTimer: 0
-  distanceChangeCooldown: 5
-  distanceChangedTimer: 0
+  roamRange: 3
+  roamDuration: 30
+  roamTimer: 0
+  roamStartDuration: 10
+  roamStartTimer: 0
+  isRoaming: 0
+  isReturning: 0
+  roamTargetChangedCooldown: 3
+  roamTargetChangedTimer: 0
   targetPosition: {x: 0, y: 0, z: 0}
   minDistance: 0.1
   delta: {x: 0, y: 0, z: 0}
+  validTargets: []
 --- !u!58 &5875106573768903713
 CircleCollider2D:
   m_ObjectHideFlags: 0

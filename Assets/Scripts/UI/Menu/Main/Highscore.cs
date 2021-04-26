@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEngine;
 
 public class Highscore : MonoBehaviour
@@ -21,64 +20,32 @@ public class Highscore : MonoBehaviour
 
     private void Start()
     {
-        this.SetValues(this._test[0], this.PlayerHighscoreItem1);
-        this.SetValues(this._test[1], this.PlayerHighscoreItem2);
-        this.SetValues(this._test[2], this.PlayerHighscoreItem3);
-        this.SetValues(this._test[3], this.PlayerHighscoreItem4);
-        this.SetValues(this._test[4], this.PlayerHighscoreItem5);
+        Debug.Log("Load score results from Start");
+        var data = SaveManager.Load();
+
+        SetValues(data.Results[0], this.PlayerHighscoreItem1);
+        SetValues(data.Results[1], this.PlayerHighscoreItem2);
+        SetValues(data.Results[2], this.PlayerHighscoreItem3);
+        SetValues(data.Results[3], this.PlayerHighscoreItem4);
+        SetValues(data.Results[4], this.PlayerHighscoreItem5);
     }
 
-    private void SetValues((string, long) item, GameObject gameObject)
-    {
-        var hsi = gameObject.GetComponent<HighscoreItem>();
-        hsi.SetValues(item.Item1, item.Item2);
-    }
-}
-
-
-public class SaveManager
-{
-    public static SaveManager current = new SaveManager();
-    
-    public void AddResult(PlayerHighScoreItem item)
-    {
-        SaveHighScoreData data = current.Load();
-        var dt = DateTime.Now;
-
-        var shsds = data.Results.OrderBy(o => o.Record).ToList();
-        var removeOldest = shsds.Last();
-        shsds.Remove(removeOldest);
-
-        item.Record = DateTime.Now;
-        shsds.Add(item);
-
-        data.Results = shsds.ToArray();
-    }
-
-    private SaveHighScoreData Load()
-    {
-        throw new NotImplementedException();
-    }
-}
-
-[Serializable]
-public class SaveHighScoreData
-{
-    public DateTime LastUpdate;
-    public PlayerHighScoreItem[] Results;
-
-    public SaveHighScoreData()
+    private void OnEnable()
     {
         
+        Debug.Log("Load score results from OnEnable");
+        var data = SaveManager.Load();
+
+        SetValues(data.Results[0], this.PlayerHighscoreItem1);
+        SetValues(data.Results[1], this.PlayerHighscoreItem2);
+        SetValues(data.Results[2], this.PlayerHighscoreItem3);
+        SetValues(data.Results[3], this.PlayerHighscoreItem4);
+        SetValues(data.Results[4], this.PlayerHighscoreItem5);
     }
-}
 
-[Serializable]
-public class PlayerHighScoreItem
-{
-    public string PlayerName { get; set; }
-
-    public string ScoreResult { get; set; }
-
-    public DateTime Record { get; set; }
+    private static void SetValues(PlayerHighScoreItem item, GameObject gameObject)
+    {
+        var hsi = gameObject.GetComponent<HighscoreItem>();
+        hsi.SetValues(item.PlayerName, item.ScoreResult);
+    }
 }

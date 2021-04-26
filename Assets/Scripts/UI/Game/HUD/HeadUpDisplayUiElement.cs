@@ -9,15 +9,32 @@ public class HeadUpDisplayUiElement : BaseUiElement
     public Camera cam;
     public UiManager uiManager;
 
+    public GameObject StaminaMinLine;
+
+    public float StaminaMinimalForAction = 20;
+    
     private void Start()
     {
         this.SetStateValues(1f, 1f, 1f);
         this.tmpCoinCounter.text = "0";
         this.tmpInfectedTime.text = "00:00:00";
+
+        this.StaminaMinimalForAction = Player.minSprintStartStamina;
+
+     
     }
     
     private void Update()
     {
+        var xs = (RectTransform)this.sliderStamina.transform;
+        var y = Player.maxStamina / xs.rect.width ;
+        
+        var x = this.StaminaMinimalForAction / Player.maxStamina * y;
+        this.StaminaMinLine.transform.position = new Vector3(x, 0, 0);
+        
+        
+        
+        
         // TODO: Muss noch abgeglichen werden mit INPUT
         if (Input.GetKey(KeyCode.Escape))
         {

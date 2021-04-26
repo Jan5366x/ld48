@@ -4,7 +4,7 @@
 /// Basis aller eingesetzter UI Elemente für eine Einheitliche Darstellung der Inhalte.
 /// Wird für die obere Instance zu einem Menü abschnitt eingesetzt, die hier entsprechend in Ordner aufgeteilt wurde.
 /// </summary>
-public abstract class BaseMenu : MonoBehaviour
+public abstract class BaseUiElement : MonoBehaviour
 {
     /// <summary>
     /// Übergibt die aktuelle Bildschirm verhältnis für die skalierung der UI Elemente. 

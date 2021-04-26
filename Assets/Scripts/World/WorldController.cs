@@ -199,7 +199,7 @@ public class WorldController : MonoBehaviour
 
     private static bool IsTileBlocked(int x, int y)
     {
-        if (x < 0 || y < 0 || x > WORLD_SIZE || y > WORLD_SIZE)
+        if (x < 0 || y < 0 || x >= WORLD_SIZE || y >= WORLD_SIZE)
         {
             return true;
         }
@@ -266,9 +266,8 @@ public class WorldController : MonoBehaviour
             coinSpreadTime = coinSpreadDuration;
         }
 
-        // TODO FIXME 
-        //GameOverHandler.victoryCondition = CheckVictoryCondition();
-        //Debug.Log(GameOverHandler.victoryCondition);
+        GameOverHandler.victoryCondition = CheckVictoryCondition();
+        Debug.Log(GameOverHandler.victoryCondition);
     }
 
     private bool CheckVictoryCondition()

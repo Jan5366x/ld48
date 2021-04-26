@@ -8,6 +8,7 @@ public class WorldController : MonoBehaviour
 {
     private static Random _random;
     public const int POLLUTION_DISPLAY_MIN = 30;
+    public const int POLLUTION_DISPLAY_OBJECTS = 1000;
     public const int SPAWNER_POLLUTION_MIN = 500;
     public const int POLLUTION_HEALER_MAX = 1500;
     public const int POLLUTION_TOWER_MAX = 5000;

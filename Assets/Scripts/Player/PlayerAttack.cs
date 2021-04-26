@@ -34,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
 
                 attackTimer = attackCooldown;
                 transform.Find("PlayerBody/Weapon").GetComponent<Animator>().SetTrigger("Trigger");
+                RandomizedSound.Play(transform, RandomizedSound.ATTACK);
             }
         }
 

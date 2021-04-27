@@ -134,6 +134,7 @@ public class Enemy : MonoBehaviour
         roamTimer -= Time.deltaTime;
         roamTargetChangedTimer -= Time.deltaTime;
         roamStartTimer -= Time.deltaTime;
+        targetTimer -= Time.deltaTime;
 
         LoadPlayer();
         GetAllValidTargets();

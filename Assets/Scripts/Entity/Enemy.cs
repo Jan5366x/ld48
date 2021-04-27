@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
     public Vector3 delta;
 
     public List<GameObject> validTargets;
+    public float targetTimer = 0;
 
     private void Start()
     {
@@ -106,19 +107,24 @@ public class Enemy : MonoBehaviour
 
     private void GetAllValidTargets()
     {
-        validTargets = new List<GameObject>();
-        if (player)
+        if (targetTimer < 0)
         {
-            validTargets.Add(player);
-        }
-
-        foreach (var collider in Physics2D.OverlapCircleAll(transform.position, senseRange))
-        {
-            var playerBuilding = collider.GetComponent<PlayerBuilding>();
-            if (playerBuilding)
+            validTargets = new List<GameObject>();
+            if (player)
             {
-                validTargets.Add(collider.gameObject);
+                validTargets.Add(player);
             }
+
+            foreach (var collider in Physics2D.OverlapCircleAll(transform.position, senseRange))
+            {
+                var playerBuilding = collider.GetComponent<PlayerBuilding>();
+                if (playerBuilding)
+                {
+                    validTargets.Add(collider.gameObject);
+                }
+            }
+
+            targetTimer = 0.5f;
         }
     }
 

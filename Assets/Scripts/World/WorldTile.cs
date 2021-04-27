@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class WorldTile : MonoBehaviour
 {
-
     [Range(0, WorldController.MAX_POLLUTION)]
     public int Pollution;
 
@@ -38,7 +37,8 @@ public class WorldTile : MonoBehaviour
     private void Update()
     {
         if (!AllowPollution || _lastPollution == Pollution) return;
-        
+
+
         UpdatePollutableObjects();
         SpawnOrDespawnInfection();
         DisableTileSpriteRenderIfPossible();
@@ -50,6 +50,8 @@ public class WorldTile : MonoBehaviour
             color.a = (float) Pollution / WorldController.MAX_POLLUTION;
             spriteRenderer.color = color;
         }
+
+        _lastPollution = Pollution;
     }
 
     private void UpdatePollutableObjects()
@@ -109,9 +111,10 @@ public class WorldTile : MonoBehaviour
         {
             pollutableObject.DestroyObject();
         }
+
         _pollutableObjects = new PollutableObject[0];
     }
-    
+
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {

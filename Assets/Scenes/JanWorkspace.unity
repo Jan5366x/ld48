@@ -2572,11 +2572,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876993706048798769, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.122
+      value: 3.066
       objectReference: {fileID: 0}
     - target: {fileID: 2876993706048798769, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.189
+      value: -2.899
       objectReference: {fileID: 0}
     - target: {fileID: 2876993706048798769, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2616,7 +2616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876993706236763253, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
       propertyPath: m_SortingOrder
-      value: 110
+      value: 281
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3c744d81d1f50ec08b7a7ebfa360e13, type: 3}
@@ -4364,17 +4364,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalagmit_001 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4067459532210267717, guid: b61903a14cac3ab49b76545cd1250bf3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 474
+      objectReference: {fileID: 0}
     - target: {fileID: 8553386825365420319, guid: b61903a14cac3ab49b76545cd1250bf3, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8553386825365420319, guid: b61903a14cac3ab49b76545cd1250bf3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.4122233
+      value: 2.499
       objectReference: {fileID: 0}
     - target: {fileID: 8553386825365420319, guid: b61903a14cac3ab49b76545cd1250bf3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4177746
+      value: -4.747
       objectReference: {fileID: 0}
     - target: {fileID: 8553386825365420319, guid: b61903a14cac3ab49b76545cd1250bf3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8715,6 +8719,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalagmit_001 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4067459532210267717, guid: b61903a14cac3ab49b76545cd1250bf3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 280
+      objectReference: {fileID: 0}
     - target: {fileID: 8553386825365420319, guid: b61903a14cac3ab49b76545cd1250bf3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -8833,6 +8841,14 @@ PrefabInstance:
     - target: {fileID: 1871508986310230176, guid: b61903a14cac3ab49b76545cd1250bf3, type: 3}
       propertyPath: m_Name
       value: Stalagmit_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4067459532210267717, guid: b61903a14cac3ab49b76545cd1250bf3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333139955057798530, guid: b61903a14cac3ab49b76545cd1250bf3, type: 3}
+      propertyPath: groundOffset
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8553386825365420319, guid: b61903a14cac3ab49b76545cd1250bf3, type: 3}
       propertyPath: m_RootOrder

@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 7698578244072121786}
   - component: {fileID: 4067459532210267717}
   - component: {fileID: 3990555472707775404}
+  - component: {fileID: 7333139955057798530}
   m_Layer: 0
   m_Name: WorldAssets1_2
   m_TagString: Untagged
@@ -159,6 +160,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pollutedSprite: {fileID: -902572386542239891, guid: 4b1d023abd1dabe47af67f2fdec32dce, type: 3}
+--- !u!114 &7333139955057798530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7449748946742734656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29a18c71c40f5d48bae82308806f05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundOffset: 0
 --- !u!1 &8133939674055637634
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,8 +242,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -668498929
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a361d69af5389c144924782903cedf56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}

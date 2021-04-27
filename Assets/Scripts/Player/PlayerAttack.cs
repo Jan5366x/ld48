@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -46,6 +47,11 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetButtonDown("PlaceDefenseTower"))
         {
             PlaceDefenseTower();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

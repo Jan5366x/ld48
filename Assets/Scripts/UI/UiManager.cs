@@ -79,6 +79,7 @@ public class UiManager : MonoBehaviour
         this._menus.Show<HeadUpDisplayUiElement>();
 
         Player.ResetPlayerData();
+        GameOverHandler.gameOver = false;
         SceneManager.LoadScene("Scene1");
     }
 
